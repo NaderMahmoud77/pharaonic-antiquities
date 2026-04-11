@@ -59,6 +59,13 @@
 
 <!-- ========= JS =======s== -->
 <script setup>
+import { useI18n } from "#imports";
+
+const { t } = useI18n();
+// Page Title
+useHead({
+  title : t('all.timelines_page_title')
+})
 // Data
 import { timeline } from "~/data/timeline";
 

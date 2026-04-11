@@ -9,7 +9,23 @@ export default defineNuxtConfig({
   css: ["./app/assets/main.css"],
 
   app: {
-    pageTransition: { name: "page", mode: "out-in" },
+    head: {
+      script: [
+        {
+          innerHTML: `
+            (function () {
+              try {
+                const theme = localStorage.getItem('theme') || 'dark';
+                if (theme === 'dark') {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch(e){}
+            })();
+          `,
+          tagPosition: "head",
+        },
+      ],
+    },
   },
 
   // 👇 مهم جدًا لـ Netlify

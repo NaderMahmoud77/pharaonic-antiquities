@@ -13,6 +13,16 @@
         >
           {{ $t("section_pharaonic_masterpieces.title") }}
         </h2>
+        <!-- DECORATIVE LINE -->
+        <div dir="ltr" class="flex items-center justify-center gap-4 mb-6">
+          <div
+            class="h-px w-20 bg-gradient-to-r from-transparent to-primaryTwo dark:to-secondary"
+          ></div>
+          <div class="w-2 h-2 rotate-45 bg-primaryTwo dark:bg-secondary"></div>
+          <div
+            class="h-px w-20 bg-gradient-to-l from-transparent to-primaryTwo dark:to-secondary"
+          ></div>
+        </div>
         <p class="text-center text-gray-600 max-w-2xl mx-auto mb-14">
           {{ $t("section_pharaonic_masterpieces.subtitle") }}
         </p>
@@ -20,7 +30,7 @@
 
       <!-- ====== Toggle Buttons ====== -->
       <div
-        class="d-flex justify-center mb-16"
+        class="d-flex justify-center mb-10"
         v-gsap.entrance.slide-left.stagger="{
           duration: 1.5,
           stagger: 0.6,
@@ -36,7 +46,7 @@
             v-for="button in buttons"
             :key="button.value"
             :value="button.value"
-            class="text-textsecondary! bg-textmain! dark:bg-gray-800/30! text-sm! font-serif!"
+            class="text-textsecondary! bg-textmain! dark:bg-gray-800/30! text-sm! font-serif! px-3! md:px-4!"
           >
             {{ $t(button.label) }}
           </v-btn>
@@ -44,7 +54,7 @@
       </div>
       <!-- ====== Artifacts Grid ====== -->
       <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
       >
         <div
           v-for="artifact in data"
@@ -79,17 +89,27 @@
               {{ $t(artifact.name) }}
             </h3>
 
-            <p class="flex items-center gap-2 text-sm text-gray-500 mt-1">
-              <v-icon size="16">mdi-timeline-clock</v-icon>
+            <!-- Period -->
+            <div class="flex items-center gap-2 text-sm text-gray-500 mt-1">
+              <div
+                class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+              >
+                <v-icon size="16">mdi-timeline-clock</v-icon>
+              </div>
               {{ $t(artifact.period) }}
-            </p>
+            </div>
 
-            <p class="flex items-center gap-2 text-sm text-gray-500 mt-1">
-              <v-icon size="16">mdi-map-marker</v-icon>
+            <!-- Location -->
+            <div class="flex items-center gap-2 text-sm text-gray-500 mt-1">
+              <div
+                class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+              >
+                <v-icon size="16">mdi-map-marker</v-icon>
+              </div>
               {{ $t(artifact.location) }}
-            </p>
+            </div>
 
-            <p class="text-gray-600 dark:text-gray-400 text-[13px] my-4">
+            <p class="text-gray-600 dark:text-gray-400 text-[13px] my-2">
               {{ truncateWords($t(artifact.description)) }}
             </p>
 

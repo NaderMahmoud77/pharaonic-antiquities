@@ -7,6 +7,16 @@
       >
         {{ $t("pages.galleryPage.title") }}
       </h2>
+      <!-- DECORATIVE LINE -->
+      <div dir="ltr" class="flex items-center justify-center gap-4 mb-6">
+        <div
+          class="h-px w-20 bg-gradient-to-r from-transparent to-primaryTwo dark:to-secondary"
+        ></div>
+        <div class="w-2 h-2 rotate-45 bg-primaryTwo dark:bg-secondary"></div>
+        <div
+          class="h-px w-20 bg-gradient-to-l from-transparent to-primaryTwo dark:to-secondary"
+        ></div>
+      </div>
       <p class="item text-center text-gray-600 max-w-2xl mx-auto mb-16!">
         {{ $t("pages.galleryPage.desc") }} - {{ imageLayout.length }}
       </p>
@@ -20,7 +30,7 @@
     <v-row>
       <template v-for="(image, imgIdx) in imageLayout" :key="imgIdx">
         <v-col cols="12" sm="6" :md="image.cols">
-          <div class=" overflow-hidden">
+          <div class="overflow-hidden">
             <v-lazy :min-height="280" transition="fade-transition">
               <img
                 :src="image.src"
@@ -39,6 +49,12 @@
 
 <!-- ===== JS ===== -->
 <script setup>
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
+useHead({
+  title: t("all.gallery_page_title"),
+});
 // Data Image
 import { imageLayout } from "~/data/gallery";
 // Compo Dialog Gallery

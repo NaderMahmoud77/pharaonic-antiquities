@@ -13,6 +13,17 @@
         >
           {{ $t("section_unique_artifacts.title") }}
         </h2>
+        <!-- DECORATIVE LINE -->
+        <div dir="ltr" class="flex items-center justify-center gap-4 mb-6">
+          <div
+            class="h-px w-20 bg-gradient-to-r from-transparent to-primaryTwo dark:to-secondary"
+          ></div>
+          <div class="w-2 h-2 rotate-45 bg-primaryTwo dark:bg-secondary"></div>
+          <div
+            class="h-px w-20 bg-gradient-to-l from-transparent to-primaryTwo dark:to-secondary"
+          ></div>
+        </div>
+
         <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
           {{ $t("section_unique_artifacts.subtitle") }}
         </p>

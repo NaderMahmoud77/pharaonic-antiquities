@@ -13,6 +13,16 @@
         >
           {{ $t(props.title) }}
         </h2>
+        <!-- DECORATIVE LINE -->
+        <div dir="ltr" class="flex items-center justify-center gap-4 mb-6">
+          <div
+            class="h-px w-20 bg-gradient-to-r from-transparent to-primaryTwo dark:to-secondary"
+          ></div>
+          <div class="w-2 h-2 rotate-45 bg-primaryTwo dark:bg-secondary"></div>
+          <div
+            class="h-px w-20 bg-gradient-to-l from-transparent to-primaryTwo dark:to-secondary"
+          ></div>
+        </div>
         <p
           class="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-14"
         >
@@ -80,26 +90,34 @@
               <!-- Content -->
               <div class="p-3! text-center">
                 <h3
-                  class="text-lg font-semibold my-4 text-primaryTwo dark:text-secondary"
+                  class="text-lg font-semibold my-3 text-primaryTwo dark:text-secondary"
                 >
                   {{ $t(pap.name) }}
                 </h3>
 
                 <!-- Period -->
-                <p
+                <div
                   class="flex items-center justify-center gap-2 text-sm text-gray-500 mt-1"
                 >
-                  <v-icon size="16">mdi-timeline-clock</v-icon>
+                  <div
+                    class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+                  >
+                    <v-icon size="16">mdi-timeline-clock</v-icon>
+                  </div>
                   {{ $t(pap.period) }}
-                </p>
+                </div>
 
                 <!-- Location -->
-                <p
+                <div
                   class="flex items-center justify-center gap-2 text-sm text-gray-500 mt-1"
                 >
-                  <i class="mdi mdi-map-marker text-[16px]"></i>
+                  <div
+                    class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+                  >
+                    <v-icon size="16">mdi-map-marker</v-icon>
+                  </div>
                   {{ $t(pap.location) }}
-                </p>
+                </div>
 
                 <!-- Description -->
                 <p class="text-sm text-gray-600 dark:text-gray-400 my-4">

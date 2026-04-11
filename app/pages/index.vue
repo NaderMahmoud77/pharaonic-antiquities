@@ -22,6 +22,12 @@
 
 <!-- ============= JS =============== -->
 <script setup>
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
+useHead({
+  title: t("all.home_page_title"),
+});
 // Components
 import HeroSection from "~/components/AllSection/HeroSection.vue";
 import PlatformGoal from "~/components/AllSection/PlatformGoal.vue";

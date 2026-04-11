@@ -11,9 +11,15 @@
       >
         {{ $t("section_platform_goal.title") }}
       </h3>
-      <p
-        class="mx-auto w-[42px] h-0.5 bg-textmain dark:bg-textsecondary mt-2"
-      ></p>
+      <div dir="ltr" class="flex items-center justify-center gap-4 mt-6">
+        <div
+          class="h-px w-20 bg-gradient-to-r from-transparent to-primaryTwo dark:to-secondary"
+        ></div>
+        <div class="w-2 h-2 rotate-45 bg-primaryTwo dark:bg-secondary"></div>
+        <div
+          class="h-px w-20 bg-gradient-to-l from-transparent to-primaryTwo dark:to-secondary"
+        ></div>
+      </div>
     </div>
 
     <!-- Main Content Card -->

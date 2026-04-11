@@ -4,13 +4,13 @@
   >
     <div class="container mx-auto flex! items-center justify-between h-full">
       <!-- logo -->
-      <nuxt-link to="/">
+      <a href="/">
         <img
           src="/images/logo/logoHero.png"
           alt="Logo"
           class="object-cover w-[125px]"
         />
-      </nuxt-link>
+      </a>
       <!-- ============ navigation links ============ -->
       <nav class="hidden xl:block text-textmain! dark:text-textsecondary!">
         <ul class="flex items-center gap-2 text-[15px]">
@@ -18,7 +18,7 @@
             <!-- Link -->
             <nuxt-link
               v-if="!link.items"
-              :to="link.to"
+              :to="localePath(link.to)"
               class="flex items-center gap-2 px-2 py-1 rounded hover:bg-primary/20! hover:text-primaryTwo! hover:dark:text-secondary! transition-colors"
             >
               <v-icon size="15">{{ link.icon }}</v-icon>
@@ -43,7 +43,7 @@
                 <v-list-item
                   v-for="child in link.items"
                   :key="child.title"
-                  :to="child.to"
+                  :to="localePath(child.to)"
                   class="hover:bg-primary/20! transition-colors rounded px-3 py-2"
                 >
                   <div
@@ -55,7 +55,10 @@
                       :class="lang === 'ar' ? 'order-2!' : 'order-1!'"
                       >{{ child.icon }}</v-icon
                     >
-                    <span :class="lang === 'ar' ? 'order-1!' : 'order-2!'">
+                    <span
+                      :class="lang === 'ar' ? 'order-1!' : 'order-2!'"
+                      class="text-[16px]!"
+                    >
                       {{ $t(child.title) }}</span
                     >
                   </div>
@@ -135,6 +138,7 @@
 
 <!-- ------------ JS ---------------- -->
 <script setup>
+const localePath = useLocalePath();
 // Lang
 const { locales, setLocale } = useI18n();
 import { useLang } from "../../composables/UseChangeLang";

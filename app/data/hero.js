@@ -1,4 +1,4 @@
-let items = ref([
+let heroItems = ref([
   {
     id: "one",
     label: "hero.one.label",
@@ -24,4 +24,4 @@ let items = ref([
     img: "/images/hero/three.png",
   },
 ]);
-export default items;
+export default heroItems;

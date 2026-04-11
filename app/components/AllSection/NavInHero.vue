@@ -3,10 +3,6 @@
     <!-- ========== Top Bar ========== -->
     <div
       class="container mx-auto flex items-center justify-center md:justify-between! py-2 relative z-50"
-      v-gsap.entrance.slide-left.stagger="{
-        duration: 1.5,
-        stagger: 0.8,
-      }"
     >
       <!-- Lang -->
       <div class="flex items-center gap-2">
@@ -62,13 +58,11 @@
     <!-- ========== Main Navbar ========== -->
     <div class="flex items-center justify-between container! mx-auto">
       <!-- Logo -->
-      <nuxt-link>
-        <img
-          src="/images/logo/logoHero.png"
-          class="w-[120px] sm:w-[125px] md:w-[170px] object-cover scale-125 transition-all duration-300 hover:scale-160 md:-mr-6!"
-          alt="Logo"
-        />
-      </nuxt-link>
+      <img
+        src="/images/logo/logoHero.png"
+        class="w-[120px] sm:w-[125px] md:w-[170px] object-cover scale-125 md:-mr-6!"
+        alt="Logo"
+      />
 
       <!-- Navigation -->
       <nav class="hidden xl:block">
@@ -77,7 +71,7 @@
             <!-- Link -->
             <nuxt-link
               v-if="!link.items"
-              :to="link.to"
+              :to="localePath(link.to)"
               class="flex items-center gap-2 px-2 py-1 rounded hover:bg-primary/20! hover:text-secondary! transition-colors"
             >
               <v-icon size="18">{{ link.icon }}</v-icon>
@@ -103,7 +97,7 @@
                 <v-list-item
                   v-for="child in link.items"
                   :key="child.title"
-                  :to="child.to"
+                  :to="localePath(child.to)"
                   class="flex items-center justify-between gap-2 hover:bg-primary/20! transition-colors rounded px-3 py-2"
                 >
                   <div
@@ -143,30 +137,22 @@
 
 <!-- =============== JS =================== -->
 <script setup>
-// components
 import BtnMode from "../UI/BtnMode";
-// Lang
 import { useLang } from "../../composables/UseChangeLang";
-const { addDirectionAndLang, lang } = useLang();
-const { locales, setLocale } = useI18n();
-const changeLang = (l) => {
-  setLocale(l);
-  addDirectionAndLang();
-};
+const localePath = useLocalePath();
+// Lang
+const { lang } = useLang();
+const { locale, setLocale } = useI18n();
 
+const changeLang = async (l) => {
+  await setLocale(l);
+};
 // Drawer
 const drawer = useDrawer();
-
 function toggleDrawer() {
   drawer.value = !drawer.value;
-  // if (drawer.value) {
-  //   document.documentElement.style.overflowY = "hidden";
-  // } else {
-  //   document.documentElement.style.overflowY = "";
-  // }
 }
 
-// ========== Data ==========
 import { navLinks } from "~/data/navLinks";
 
 const contact = [
@@ -183,9 +169,17 @@ const contact = [
 ];
 </script>
 
+<!-- ====== Style ====== -->
 <style>
 .router-link-active {
-  /* background-color: color-mix(in oklab, var(--color-primary) 30%, transparent); */
+  background-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
+}
+.dark .router-link-active {
   color: var(--color-secondary);
+  background-color: color-mix(
+    in oklab,
+    var(--color-secondary) 30%,
+    transparent
+  );
 }
 </style>

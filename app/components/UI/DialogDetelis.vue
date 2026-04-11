@@ -1,20 +1,19 @@
 <template>
   <div>
     <ClientOnly>
-      <v-dialog v-model="dialog" max-width="830" max-height="750">
+      <v-dialog v-model="dialog" max-width="830" max-height="700">
         <div
           class="relative! overflow-y-auto! rounded-bl-4xl rounded-tr-4xl shadow-lg backdrop-blur-2xl dark:shadow-gray-300/20"
         >
           <div
-            class="p-14! grid grid-cols-1 sm:grid-cols-2 gap-8 items-center text-primary! dark:text-textsecondary! bg-textsecondary dark:bg-[#ffffff1a]"
+            class="py-7! px-4! md:p-14! grid grid-cols-1 sm:grid-cols-2 gap-8 items-center text-primary! dark:text-textsecondary! bg-textsecondary dark:bg-[#ffffff1a]"
           >
             <!-- Image and btn Favorites -->
-
             <div class="text-center">
               <!-- btn Favorites -->
               <BtnFavorites :item="item" />
               <div
-                class="bg-textmain/30! dark:bg-textsecondary! p-2! mt-4 sm:mt-0"
+                class="bg-textmain/30! dark:bg-textsecondary! p-1! mt-4 sm:mt-0"
               >
                 <img :src="item.image" :alt="$t(item.name)" class="w-full" />
               </div>
@@ -24,7 +23,7 @@
               :class="lang == 'ar' ? 'text-end' : 'text-start'"
               class="dark:text-textsecondary text-textmain"
             >
-              <h1 class="text-2xl font-semibold">
+              <h1 class="text-lg md:text-2xl font-semibold">
                 <span class="text-primaryTwo dark:text-secondary ms-1"
                   >{{ $t("all.name") }}:
                 </span>

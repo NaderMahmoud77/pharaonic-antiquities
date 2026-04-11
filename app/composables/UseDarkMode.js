@@ -1,6 +1,6 @@
 import { ref, onMounted } from "vue";
 
-const isDarkMode = ref(false);
+const isDarkMode = ref(true);
 
 const toggleDarkMode = () => {
   isDarkMode.value = !isDarkMode.value;

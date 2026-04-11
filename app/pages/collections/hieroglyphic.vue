@@ -101,6 +101,11 @@
 import { ref, computed } from "vue";
 import { useI18n } from "vue-i18n";
 let { t } = useI18n();
+// Head Title
+useHead({
+  title: t("all.hieroglyphic_page_title"),
+});
+
 // Data
 import { hieroglyphic } from "~/data/hieroglyphicPage";
 // Btns

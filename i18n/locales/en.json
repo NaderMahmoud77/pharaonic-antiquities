@@ -1545,7 +1545,8 @@
     }
   },
   "footer": {
-    "desc": "All information presented on this website is reliable and based on verified academic sources, with most texts and images collected from official Egyptian museums as well as international museums that house authentic ancient Egyptian artifacts, such as The Egyptian Museum, The British Museum, The Metropolitan Museum of Art, Wikimedia Commons, and Wikipedia, aiming to provide accurate and educational content about Ancient Egyptian civilization."
+    "desc": "All information presented on this website is reliable and based on verified academic sources, with most texts and images collected from official Egyptian museums as well as international museums that house authentic ancient Egyptian artifacts, such as The Egyptian Museum, The British Museum, The Metropolitan Museum of Art, Wikimedia Commons, and Wikipedia, aiming to provide accurate and educational content about Ancient Egyptian civilization.",
+    "rights": "All rights reserved"
   },
   "all": {
     "detailsBtn": "Show Details",
@@ -1565,7 +1566,31 @@
     "favorites": {
       "added": " has been added to favorites",
       "removed": " has been removed from favorites"
-    }
+    },
+    "loading_text": "Loading",
+    "home_page_title": "Home Page",
+    "gallery_page_title": "Gallery Page",
+    "royal_tombs_page_title": "Royal Tombs Page",
+    "temples_page_title": "Temples Page",
+    "timelines_page_title": "Timelines Page",
+    "hieroglyphic_page_title": "Hieroglyphic Inscriptions Page",
+    "artifacts_page_title": "3D Artifacts",
+    "museum_page_title": "Museums Page",
+    "favorites_page_title": "Favorites Page",
+
+    "artifacts_page_desc": "Explore ancient Egyptian artifacts in interactive 3D",
+    "artifacts_count_label": "models",
+    "artifacts_disclaimer_title": "Note on Authenticity",
+    "artifacts_disclaimer_body": "Some of the pieces displayed here may not be the original artifacts. They could be replicas or similar items that were photographed and digitized for 3D presentation purposes.",
+    "artifacts_replica_badge": "Replica"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "goHome": "Go Home",
+    "goBack": "Go Back",
+    "exploreTemples": "Explore Temples",
+    "visitMuseums": "Visit Museums",
+    "discoverArtifacts": "Discover Artifacts"
   },
   "tooltip": {
     "tooltipDark": "Click to activate Dark Mode",

@@ -1,5 +1,7 @@
 <template>
-  <div class="bg-bgmain dark:bg-[#080326] min-h-screen text-white overflow-x-hidden!">
+  <div
+    class="bg-bgmain dark:bg-[#080326] min-h-screen text-white overflow-x-hidden!"
+  >
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
@@ -10,6 +12,7 @@
   </div>
 </template>
 
+<!-- ========== JS ========== -->
 <script setup>
 // SnackBar
 import SnackbarFavorites from "~/components/UI/SnackbarFavorites.vue";

@@ -8,6 +8,17 @@
         >
           {{ $t("pages.temples.templesTitle") }}
         </h2>
+        <!-- DECORATIVE LINE -->
+        <div dir="ltr" class="flex items-center justify-center gap-4 mb-6">
+          <div
+            class="h-px w-20 bg-gradient-to-r from-transparent to-primaryTwo dark:to-secondary"
+          ></div>
+          <div class="w-2 h-2 rotate-45 bg-primaryTwo dark:bg-secondary"></div>
+          <div
+            class="h-px w-20 bg-gradient-to-l from-transparent to-primaryTwo dark:to-secondary"
+          ></div>
+        </div>
+        <!-- SUBTITLE -->
         <p class="item text-center text-gray-600 max-w-2xl mx-auto mb-16!">
           {{ $t("pages.temples.templesSubtitle") }}
         </p>
@@ -42,15 +53,23 @@
               {{ $t(temp.name) }}
             </h3>
 
-            <p class="flex items-center gap-2 text-sm text-gray-500 mt-1">
-              <v-icon size="16">mdi-timeline-clock</v-icon>
+            <div class="flex items-center gap-2 text-sm text-gray-500 mt-1">
+              <div
+                class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+              >
+                <v-icon size="16">mdi-timeline-clock</v-icon>
+              </div>
               {{ $t(temp.period) }}
-            </p>
+            </div>
 
-            <p class="flex items-center gap-2 text-sm text-gray-500 mt-1">
-              <v-icon size="16">mdi-map-marker</v-icon>
+            <div class="flex items-center gap-2 text-sm text-gray-500 mt-1">
+              <div
+                class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+              >
+                <v-icon size="16">mdi-map-marker</v-icon>
+              </div>
               {{ $t(temp.location) }}
-            </p>
+            </div>
 
             <p
               class="text-gray-600 dark:text-gray-400 text-[15px] mb-4 line-clamp-3"
@@ -72,6 +91,12 @@
 
 <!-- =========== JS  =========== -->
 <script setup>
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+// Page Title
+useHead({
+  title: t("all.temples_page_title"),
+});
 // Museums Data
 import { temples } from "~/data/temples";
 // Btn Show Deteils

@@ -13,6 +13,17 @@
         >
           {{ $t("section_museums.museumsTitle") }}
         </h2>
+        <!-- DECORATIVE LINE -->
+        <div dir="ltr" class="flex items-center justify-center gap-4 mb-6">
+          <div
+            class="h-px w-20 bg-gradient-to-r from-transparent to-primaryTwo dark:to-secondary"
+          ></div>
+          <div class="w-2 h-2 rotate-45 bg-primaryTwo dark:bg-secondary"></div>
+          <div
+            class="h-px w-20 bg-gradient-to-l from-transparent to-primaryTwo dark:to-secondary"
+          ></div>
+        </div>
+
         <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
           {{ $t("section_museums.museumsSubtitle") }}
         </p>
@@ -53,8 +64,12 @@
               {{ $t(museum.name) }}
             </h3>
 
-            <div class="flex items-center text-gray-500 text-sm mb-3">
-              <v-icon class="mr-1">mdi-map-marker</v-icon>
+            <div class="flex items-center gap-2 text-sm text-gray-500 mt-1">
+              <div
+                class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+              >
+                <v-icon size="16">mdi-map-marker</v-icon>
+              </div>
               {{ $t(museum.location) }}
             </div>
 
@@ -71,7 +86,7 @@
           </div>
         </div>
       </div>
-      <!-- Btn see more -->
+      <!-- ==== Btn see more ==== -->
       <div class="mt-14">
         <router-link to="/museums">
           <button

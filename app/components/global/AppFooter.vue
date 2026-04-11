@@ -10,14 +10,19 @@
       threshold: 0.3,
     }"
   >
-    <div class="d-flex ga-3">
-      <v-btn
-        v-for="icon in icons"
-        :key="icon"
-        :icon="icon"
-        density="comfortable"
-        variant="text"
-      ></v-btn>
+    <!-- ── Social Icons ── -->
+    <div class="flex items-center gap-3">
+      <a
+        v-for="social in socials"
+        :key="social.icon"
+        href="#"
+        :aria-label="social.label"
+        class="group social-btn flex items-center justify-center w-10 h-10 rounded-xl border social-icon-btn transition-all duration-300 hover:-translate-y-1"
+      >
+        <v-icon size="18" class="transition-colors duration-300">
+          {{ social.icon }}
+        </v-icon>
+      </a>
     </div>
 
     <v-divider class="my-2" thickness="2" width="50"></v-divider>
@@ -28,11 +33,50 @@
 
     <v-divider></v-divider>
 
-    <div>{{ new Date().getFullYear() }} — <strong>Nader</strong></div>
+    <!-- ── Copyright ── -->
+    <div
+      class="flex items-center gap-1.5 text-xs text-textmain/40 dark:text-white/30"
+    >
+      <v-icon size="12">mdi-copyright</v-icon>
+      <span>{{ new Date().getFullYear() }}</span>
+      <span class="mx-0.5">—</span>
+      <strong class="text-textmain/60 dark:text-white/50">Nader</strong>
+      <span class="mx-0.5">·</span>
+      <span>{{ $t("footer.rights") }}</span>
+    </div>
   </v-footer>
 </template>
 
 <!-- -------- JS -------- -->
 <script setup>
-const icons = ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"];
+const socials = [
+  { icon: "mdi-facebook", label: "Facebook" },
+  { icon: "mdi-twitter", label: "Twitter" },
+  { icon: "mdi-linkedin", label: "LinkedIn" },
+  { icon: "mdi-instagram", label: "Instagram" },
+];
 </script>
+
+<!-- -------- Styles -------- -->
+<style scoped>
+/* ── Social buttons ── */
+.social-btn {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease !important;
+}
+
+.social-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(180, 150, 100, 0.25) !important;
+}
+
+.v-theme--dark .social-btn:hover {
+  box-shadow: 0 6px 18px rgba(200, 170, 110, 0.2) !important;
+}
+/* ── Copyright ── */
+.footer-copy {
+  opacity: 0.6;
+  font-size: 12px;
+}
+</style>

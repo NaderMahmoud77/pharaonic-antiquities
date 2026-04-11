@@ -7,6 +7,17 @@
       >
         {{ $t("pages.royal_tombs.title") }}
       </h2>
+      <!-- DECORATIVE LINE -->
+      <div dir="ltr" class="flex items-center justify-center gap-4 mb-6">
+        <div
+          class="h-px w-20 bg-gradient-to-r from-transparent to-primaryTwo dark:to-secondary"
+        ></div>
+        <div class="w-2 h-2 rotate-45 bg-primaryTwo dark:bg-secondary"></div>
+        <div
+          class="h-px w-20 bg-gradient-to-l from-transparent to-primaryTwo dark:to-secondary"
+        ></div>
+      </div>
+      <!-- SUBTITLE -->
       <p class="item text-center text-gray-600 max-w-2xl mx-auto mb-16!">
         {{ $t("pages.royal_tombs.subtitle") }}
       </p>
@@ -80,6 +91,13 @@
 </template>
 
 <script setup>
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+// Head title
+useHead({
+  title: t("all.royal_tombs_page_title"),
+});
+
 // Data
 import { royalTombs } from "~/data/royalTombs";
 // Btn Show Deteils
