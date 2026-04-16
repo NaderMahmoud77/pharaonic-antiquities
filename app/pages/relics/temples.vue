@@ -28,8 +28,8 @@
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <div
           v-gsap.entrance.slide-left.stagger="{
-            duration: 1.5, // مدة أطول من default
-            stagger: 0.6, // كل عنصر يتأخر عن اللي قبله 0.3s
+            duration: 1, // مدة أطول من default
+            stagger: 0.4, // كل عنصر يتأخر عن اللي قبله 0.4s
           }"
           v-for="temp in temples"
           :key="temp.name"
@@ -37,7 +37,7 @@
         >
           <!-- IMAGE -->
           <div class="overflow-hidden">
-            <img
+            <NuxtImg
               :src="temp.image"
               :alt="$t(temp.name)"
               class="w-full h-60 object-cover hover:scale-105 transition-all duration-300"

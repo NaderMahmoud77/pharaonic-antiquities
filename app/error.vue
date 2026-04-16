@@ -172,6 +172,7 @@
   </div>
 </template>
 
+<!-- ===== JS ===== -->
 <script setup>
 // SEO metadata
 definePageMeta({
@@ -189,6 +190,7 @@ useHead({
 });
 </script>
 
+<!-- ===== STYLE ===== -->
 <style scoped>
 /* Slow pulse */
 @keyframes pulse-slow {

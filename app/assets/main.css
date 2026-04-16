@@ -10,7 +10,7 @@
   --color-secondary: #e4c590;
 }
 
-/* Button Swiper Next and Prive */
+/* Button Swiper Next and Prive ──────────────────────────────── */
 .button-3d {
   -webkit-appearance: none;
   appearance: none;
@@ -41,7 +41,10 @@
     var(--color-primaryTwo)
   );
   border-radius: 20px;
-  transition: transform 0.3s, border-radius 0.3s, background 10s;
+  transition:
+    transform 0.3s,
+    border-radius 0.3s,
+    background 10s;
 }
 
 .button-3d:active .button-top {
@@ -69,7 +72,9 @@
     var(--color-primaryTwo)
   );
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
-  transition: border-radius 0.2s, padding-top 0.2s;
+  transition:
+    border-radius 0.2s,
+    padding-top 0.2s;
 }
 
 .button-base {
@@ -81,9 +86,12 @@
   width: 100%;
   height: calc(100% - 4px);
   background-color: rgba(0, 0, 0, 0.15);
-  box-shadow: 0 1px 1px 0 rgba(255, 255, 255, 0.75),
+  box-shadow:
+    0 1px 1px 0 rgba(255, 255, 255, 0.75),
     inset 0 2px 2px rgba(0, 0, 0, 0.25);
-  transition: border-radius 0.2s, padding-top 0.2s;
+  transition:
+    border-radius 0.2s,
+    padding-top 0.2s;
 }
 
 .button-3d:active .button-bottom {
@@ -95,9 +103,46 @@
   border-radius: 10px 10px 8px 8px / 8px;
 }
 
+/* ── Close button ──────────────────────────────── */
+.close-btn {
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
 
-/* Timeline */
+  background-image: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primaryTwo)
+  );
+  color: #fff;
 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.15) rotate(90deg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+}
+
+.close-btn:active {
+  transform: scale(0.93);
+}
+
+.close-btn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* Timeline ──────────────────────────────── */
 .v-timeline-divider__after {
   background: var(--color-textmain) !important;
 }

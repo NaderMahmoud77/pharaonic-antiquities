@@ -3,7 +3,7 @@
     <div class="container mx-auto px-4">
       <div
         v-gsap.entrance.slide-left.stagger="{
-          duration: 1.5,
+          duration: 1,
           stagger: 0.6,
         }"
       >
@@ -33,7 +33,7 @@
       <div
         class="button-container flex! m-[21px]!"
         v-gsap.entrance.slide-left.stagger="{
-          duration: 1.5,
+          duration: 1,
           stagger: 0.6,
         }"
       >
@@ -78,7 +78,7 @@
             class="rounded-2xl mb-2 w-[330px] shadow-sm backdrop-blur-2xl dark:shadow-gray-300/20 overflow-hidden"
           >
             <div class="overflow-hidden">
-              <img
+              <NuxtImg
                 :src="artifact.image"
                 :alt="$t(artifact.name)"
                 class="w-full h-64 hover:scale-105 duration-300"

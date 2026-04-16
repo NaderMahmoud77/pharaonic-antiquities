@@ -30,18 +30,19 @@
       >
         <div
           v-gsap.entrance.slide-left.stagger="{
-            duration: 1.5, // مدة أطول من default
-            stagger: 0.6, // كل عنصر يتأخر عن اللي قبله 0.3s
+            duration: 1, // مدة أطول من default
+            stagger: 0.4, // كل عنصر يتأخر عن اللي قبله 0.4s
           }"
           :class="`w-full max-w-[500px] sm:max-w-[420px] md:max-w-[480px] backdrop-blur-2xl bg-textsecondary dark:bg-[#ffffff1a] px-4! py-6! rounded-bl-4xl rounded-tr-4xl ${
             lang === 'ar' ? 'text-end!' : 'text-start!'
           }`"
         >
-          <img
+          <NuxtImg
             v-if="time.image"
             :src="time.image"
             :alt="$t(time.title)"
             class="mb-8!"
+            loading="lazy"
           />
           <h1
             class="text-primaryTwo! dark:text-secondary! text-2xl font-semibold mb-4"
@@ -64,8 +65,8 @@ import { useI18n } from "#imports";
 const { t } = useI18n();
 // Page Title
 useHead({
-  title : t('all.timelines_page_title')
-})
+  title: t("all.timelines_page_title"),
+});
 // Data
 import { timeline } from "~/data/timeline";
 

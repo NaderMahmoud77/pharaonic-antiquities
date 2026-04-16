@@ -32,7 +32,7 @@
         <v-col cols="12" sm="6" :md="image.cols">
           <div class="overflow-hidden">
             <v-lazy :min-height="280" transition="fade-transition">
-              <img
+              <NuxtImg
                 :src="image.src"
                 :alt="image.name"
                 class="w-full object-cover cursor-pointer h-[500px] md:h-[400px] hover:scale-110 duration-300"

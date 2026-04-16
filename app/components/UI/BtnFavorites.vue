@@ -5,7 +5,7 @@
       variant="tonal"
       height="42"
       min-width="0"
-      class="px-4 hover:scale-110! transition! duration-300!"
+      class="bg-primaryTwo/10! dark:bg-secondary/10! flex items-center justify-center"
     >
       <v-icon
         :class="isFav ? 'text-red' : 'text-grey'"
@@ -18,6 +18,8 @@
   </div>
 </template>
 
+
+<!-- ===== JS ===== -->
 <script setup>
 const props = defineProps({
   item: {

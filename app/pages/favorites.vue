@@ -15,22 +15,45 @@
       <!-- EMPTY STATE -->
       <div
         v-if="store.favorites.length === 0"
-        class="text-center text-gray-400 mt-20"
+        class="flex flex-col items-center justify-center text-center mt-20 py-16 px-6 rounded-3xl bg-gray-50 dark:bg-gray-800/40 border border-dashed border-gray-200 dark:border-gray-700 max-w-lg mx-auto"
       >
-        <v-icon size="48">mdi-heart-off-outline</v-icon>
-        <p class="mt-4 text-lg">{{ $t("all.no_favorites") }}</p>
+        <!-- Icon bubble -->
+        <div
+          class="w-20 h-20 rounded-full flex items-center justify-center mb-6 bg-rose-50 dark:bg-rose-900/30 text-rose-400 dark:text-rose-300"
+        >
+          <v-icon size="40">mdi-heart-off-outline</v-icon>
+        </div>
+
+        <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-2">
+          {{ $t("all.favorites.no_favorites") }}
+        </h3>
+
+        <p
+          class="text-sm text-gray-400 dark:text-gray-500 max-w-xs leading-relaxed"
+        >
+          {{ $t("all.favorites.no_favorites_hint") }}
+        </p>
+
+        <!-- CTA -->
+        <NuxtLink
+          to="/"
+          class="mt-8 inline-flex items-center gap-2 px-5! py-2.5! rounded-xl text-sm font-medium bg-primaryTwo! dark:bg-secondary! text-white! dark:text-gray-900! hover:opacity-90! transition-all"
+        >
+          <v-icon size="16">mdi-compass-outline</v-icon>
+          {{ $t("all.favorites.explore_btn") }}
+        </NuxtLink>
       </div>
 
       <!-- GRID -->
       <div v-else class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <div
-          v-gsap.entrance.slide-left.stagger="{ duration: 1.5, stagger: 0.6 }"
+          v-gsap.entrance.slide-left.stagger="{ duration: 1, stagger: 0.4 }"
           v-for="temp in store.favorites"
           :key="temp.id"
           class="rounded-2xl shadow-sm dark:shadow-gray-300/20 overflow-hidden hover:-translate-y-1 transition-all cursor-pointer"
         >
           <div class="overflow-hidden">
-            <img
+            <NuxtImg
               :src="temp.image"
               :alt="safeT(temp.name)"
               class="w-full h-60 object-cover hover:scale-105 transition-all duration-300"
@@ -55,17 +78,20 @@
               {{ safeT(temp.location) }}
             </p>
 
-            <!-- ✅ safeT + truncate — no more crash on raw description text -->
+            <!--  safeT + truncate — no more crash on raw description text -->
             <p
               class="text-gray-600 dark:text-gray-400 text-[15px] mb-4 line-clamp-3"
             >
               {{ truncateWords(safeT(temp.description)) }}
             </p>
-          </div>
-
-          <div class="flex gap-3 items-center px-5! pb-4!">
-            <BtnShowDeteils :data="temp" />
-            <BtnFavorites :item="temp" />
+            <!-- Remove from favorites button -->
+            <button
+              @click.stop="removeItem(temp)"
+              :title="$t('all.favorites.remove')"
+              class="w-[34px] h-[34px] rounded-full flex items-center justify-center bg-white/80! dark:bg-[#1e2025]/80! text-[#E24B4A]! dark:text-[#F09595]! hover:bg-[#E24B4A]! dark:hover:bg-[#A32D2D]! hover:text-white! dark:hover:text-[#FCEBEB]! transition-all duration-200 active:scale-90!"
+            >
+              <v-icon size="18">mdi-trash-can-outline</v-icon>
+            </button>
           </div>
         </div>
       </div>
@@ -73,6 +99,7 @@
   </section>
 </template>
 
+<!-- ====== JS ====== -->
 <script setup>
 const { t } = useI18n();
 
@@ -80,10 +107,15 @@ useHead({
   title: t("all.favorites_page_title"),
 });
 
+// Load favorites once when the component is mounted
 const store = useFavoritesStore();
 await callOnce(() => store.loadFavorites());
 
-// ✅ Safe translate: if the key doesn't exist in i18n, return it as raw text
+const removeItem = (item) => {
+  store.toggleFavorite(item); // toggleFavorite removes if already favorited
+};
+
+//  Safe translate: if the key doesn't exist in i18n, return it as raw text
 const safeT = (key) => {
   if (!key || typeof key !== "string") return key ?? "";
   try {

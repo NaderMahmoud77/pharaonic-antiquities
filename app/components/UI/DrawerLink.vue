@@ -7,13 +7,26 @@
       :location="lang === 'ar' ? 'right' : 'left'"
     >
       <div>
-        <div
+        <!-- Close button -->
+        <button
+          class="close-btn absolute my-4 mx-4"
+          aria-label="Close dialog"
           @click="toggleDrawer"
-          class="my-4 mx-4 cursor-pointer border border-primary dark:border-white w-8 h-8 rounded-full text-center absolute"
           :class="lang === 'ar' ? 'left-0' : 'right-0'"
         >
-          <v-icon>mdi mdi-close</v-icon>
-        </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            class="w-4 h-4"
+            aria-hidden="true"
+          >
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
 
         <!-- Btn Mode -->
         <v-btn
@@ -150,7 +163,7 @@
         </v-btn>
       </div>
       <!-- Logo -->
-      <img
+      <NuxtImg
         src="/images/logo/logoHero.png"
         alt="logo"
         class="w-[120px] my-4 mx-auto"

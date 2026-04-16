@@ -1,8 +1,13 @@
 <template>
   <div>
+    <!-- All Sections -->
     <HeroSection />
     <PlatformGoal />
-    <MuseumSection />
+    <Museum
+      :data="museums.slice(0, 6)"
+      title="section_museums.museumsTitle"
+      subtitle="section_museums.museumsSubtitle"
+    />
     <UniqueArtifacts />
     <PharaonicMasterpieces />
     <PapyriAndSymbols
@@ -31,7 +36,7 @@ useHead({
 // Components
 import HeroSection from "~/components/AllSection/HeroSection.vue";
 import PlatformGoal from "~/components/AllSection/PlatformGoal.vue";
-import MuseumSection from "~/components/AllSection/MuseumSection.vue";
+import Museum from "~/components/AllSection/Museum.vue";
 import UniqueArtifacts from "~/components/AllSection/UniqueArtifacts.vue";
 import PharaonicMasterpieces from "~/components/AllSection/PharaonicMasterpieces.vue";
 import PapyriAndSymbols from "~/components/AllSection/PapyriAndSymbols.vue";
@@ -41,4 +46,5 @@ import ContactUs from "~/components/AllSection/ContactUs.vue";
 // Data
 import { papyri } from "~/data/papyri_hieroglyphs";
 import { sacredSymbols } from "~/data/sacred_symbols";
+import { museums } from "~/data/museums";
 </script>

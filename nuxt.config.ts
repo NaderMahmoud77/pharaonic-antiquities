@@ -47,7 +47,13 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@nuxtjs/i18n", "nuxt-swiper", "@pinia/nuxt", "v-gsap-nuxt"],
+  modules: [
+    "@nuxtjs/i18n",
+    "nuxt-swiper",
+    "@pinia/nuxt",
+    "v-gsap-nuxt",
+    "@nuxt/image",
+  ],
 
   i18n: {
     defaultLocale: "ar",

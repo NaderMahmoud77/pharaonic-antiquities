@@ -75,6 +75,7 @@
                 web-share
                 :src="`https://sketchfab.com/models/${artifact.id}/embed?ui_infos=0&ui_annotations=0&ui_hint=0&ui_author=0&ui_watermark=0&ui_watermark_link=0`"
                 class="w-full h-full"
+                loading="lazy"
               />
             </div>
 
@@ -93,6 +94,7 @@
   </div>
 </template>
 
+<!-- ======= JS ======= -->
 <script setup>
 // Data
 import { artifacts3d } from "~/data/artifacts3d";
@@ -104,6 +106,7 @@ useHead({
 });
 </script>
 
+<!-- ====== STYLE ======= -->
 <style scoped>
 .artifact-card {
   background: linear-gradient(

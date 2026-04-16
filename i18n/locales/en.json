@@ -18,7 +18,7 @@
       }
     },
     "museums": "Museums",
-    "artifacts_3d": "3D Artifacts",
+    "artifacts_3d": "Artifacts",
     "favorites": "Favorites"
   },
   "nav": {
@@ -59,70 +59,107 @@
   "section_museums": {
     "museumsTitle": "Egyptian Museums",
     "museumsSubtitle": "Explore the most famous museums that house the greatest treasures from various Egyptian periods.",
+    "visitWebsite": "Visit Official Website",
+    "seeMore": "See more",
     "museum1": {
       "name": "Grand Egyptian Museum",
-      "location": "Giza",
-      "description": "The largest archaeological museum in the world, housing a vast collection of Ancient Egyptian artifacts, including the treasures of Tutankhamun.",
-      "desc2": "The Grand Egyptian Museum is a global cultural project designed to present Ancient Egyptian history through modern, immersive exhibition techniques. The museum showcases the development of Egyptian civilization from prehistoric times through the Greco-Roman period.",
-      "established": "21st century",
-      "highlights": "The complete Tutankhamun collection, the colossal statue of Ramesses II",
-      "collections": "Old, Middle, and New Kingdom artifacts, royal funerary objects",
-      "importance": "The largest museum project in Egypt’s history and a symbol of its cultural heritage worldwide"
+      "location": "Giza, Egypt",
+      "description": "The largest archaeological museum in the world, housing the most comprehensive collection of ancient Egyptian antiquities, including the complete treasures of Pharaoh Tutankhamun.",
+      "desc2": "The Grand Egyptian Museum represents a landmark civilizational project designed to be the world's foremost reference for ancient Egyptian history, spanning prehistoric times through the Greco-Roman period. The museum offers an immersive visitor experience combining vast display halls with state-of-the-art digital technologies, establishing it as a premier scientific and cultural destination on the global stage.",
+      "period": "21st Century",
+      "highlights": "The complete Tutankhamun treasure collection, the colossal statue of Ramesses II, the Royal Chariots Hall",
+      "collections": "Old, Middle, and New Kingdom antiquities; royal funerary assemblages; everyday life objects; Pharaonic textiles and jewelry",
+      "importance": "The most ambitious museum project in Egypt's modern history, cementing the country's status as an irreplaceable reference for world civilization."
     },
-
     "museum2": {
       "name": "National Museum of Egyptian Civilization",
-      "location": "Cairo – Fustat",
-      "description": "Displays artifacts from various Egyptian civilizations and includes the famous Royal Mummies Hall.",
-      "desc2": "The museum offers a comprehensive narrative of Egyptian history across different eras, focusing on the evolution of Egyptian society and culture. It integrates traditional artifacts with modern multimedia presentations.",
-      "established": "21st century",
-      "highlights": "Royal Mummies Hall, chronological display of Egyptian civilization",
-      "collections": "Royal mummies, daily life tools, historical artworks",
-      "importance": "Emphasizes Egypt’s cultural identity beyond the Pharaonic period alone"
+      "location": "Cairo, Al-Fustat",
+      "description": "A comprehensive museum tracing the arc of Egyptian civilization across successive eras, home to the celebrated Royal Mummies Hall housing the remains of ancient pharaohs.",
+      "desc2": "The National Museum of Egyptian Civilization presents an integrated panorama of Egyptian society and human development through time, employing a modern curatorial approach that combines authentic artifacts with audiovisual media. The museum is distinguished by its Royal Mummies Hall, to which the remains of Egypt's greatest kings were transferred in a historic ceremonial procession.",
+      "period": "21st Century",
+      "highlights": "The Royal Mummies Hall, the comprehensive chronological display of Egyptian civilization",
+      "collections": "Royal mummies, everyday life objects, artistic pieces representing diverse periods of Egyptian history",
+      "importance": "Transcends an exclusive focus on the Pharaonic era to present Egyptian civilizational identity in its full breadth and diversity."
     },
-
     "museum3": {
       "name": "Mummification Museum",
-      "location": "Luxor",
-      "description": "Exhibits ancient Egyptian mummification techniques using real tools, artifacts, and preserved mummies.",
-      "desc2": "The Mummification Museum focuses on funerary practices and body preservation methods in Ancient Egypt, explaining the religious beliefs connected to the afterlife and the role of priests in mummification.",
-      "established": "Late 20th century",
-      "highlights": "Original mummification tools, canopic jars",
-      "collections": "Medical instruments, human and animal mummies, funerary amulets",
-      "importance": "Explains the scientific and religious aspects of ancient Egyptian mummification"
+      "location": "Luxor, Egypt",
+      "description": "Dedicated to the embalming and mummification techniques of ancient Egypt, illustrated through original tools, rare artifacts, and well-preserved mummies.",
+      "desc2": "The Mummification Museum examines in depth the funerary practices and body preservation methods of ancient Egypt, contextualizing the religious beliefs surrounding resurrection and the afterlife, and the specialized role of priestly embalmers. The museum serves as a rare scientific document revealing the technical and theological evolution of this singular practice across millennia.",
+      "period": "Late 20th Century",
+      "highlights": "Original embalming instruments, canopic jars, funerary ritual texts",
+      "collections": "Medical and surgical tools, human and animal mummies, funerary amulets and coffin masks",
+      "importance": "Illuminates the religious, scientific, and medical dimensions of Pharaonic mummification, standing as a uniquely specialized reference in the field."
     },
-
     "museum4": {
       "name": "Luxor Museum",
-      "location": "Luxor",
-      "description": "Showcases important Pharaonic artifacts, especially from the New Kingdom, including statues and mummies.",
-      "desc2": "Luxor Museum presents a carefully curated selection of masterpieces from ancient Thebes, emphasizing artistic quality and the fine details of statues and reliefs.",
-      "established": "20th century",
-      "highlights": "New Kingdom royal statues, artifacts from Theban temples",
-      "collections": "Stone statues, reliefs, selected mummies",
-      "importance": "Reflects the significance of Thebes as a major religious and political center"
+      "location": "Luxor, Egypt",
+      "description": "Presents a carefully curated selection of Pharaonic antiquities, particularly from the New Kingdom period, encompassing exceptional statuary and notable mummies.",
+      "desc2": "Luxor Museum combines rigorous museum standards with a collection of the highest artistic caliber, representing the apex of ancient Egyptian creative achievement. The museum places particular emphasis on the fine detail of reliefs and sculptures, making it both an academic and aesthetic destination for scholars of Pharaonic civilization.",
+      "period": "20th Century",
+      "highlights": "New Kingdom royal statues, artifacts from the Theban temples, statue of Amenhotep III",
+      "collections": "Stone and wooden statuary, relief panels, selected mummies, precious gold objects",
+      "importance": "Reflects the status of Thebes (Luxor) as the religious and political capital of the Egyptian New Kingdom, embodying the genius of Pharaonic art at its height."
     },
-
     "museum5": {
-      "name": "Nubian Museum",
-      "location": "Aswan",
-      "description": "Displays artifacts of Nubian and Pharaonic civilizations, especially from the New Kingdom and the Ramesside period.",
-      "desc2": "The Nubian Museum is dedicated to preserving and presenting Nubian heritage, highlighting the cultural interaction between Nubia and Ancient Egypt. Its architecture reflects the traditional Nubian environment.",
-      "established": "20th century",
-      "highlights": "Traditional Nubian architecture, rare archaeological finds",
-      "collections": "Nubian artifacts, daily life tools, statues and stone objects",
-      "importance": "Preserves Nubian heritage affected by the construction of the Aswan High Dam"
+      "name": "Nubia Museum",
+      "location": "Aswan, Egypt",
+      "description": "Highlights the antiquities of Nubian civilization and its interaction with Pharaonic Egypt, with particular focus on rare pieces from the Ramesside period and New Kingdom.",
+      "desc2": "The Nubia Museum was founded to safeguard the Nubian cultural heritage, much of which was threatened by the construction of the Aswan High Dam. It presents the multifaceted historical relations between Nubia and Pharaonic Egypt, and showcases the distinctive artistic and architectural character of Nubian culture through considered lighting and rigorous scholarly methodology.",
+      "period": "20th Century",
+      "highlights": "Rescued sculptures and artifacts salvaged from flooding, examples of traditional Nubian architecture",
+      "collections": "Nubian and Pharaonic antiquities, domestic implements, stone statuary and reliefs, ceramics and textiles",
+      "importance": "Plays a pivotal role in preserving Nubian heritage and illuminating the mutual influence between the two great civilizations of the Nile Valley."
     },
-
     "museum6": {
-      "name": "Egyptian Museum in Tahrir",
-      "location": "Cairo – Tahrir Square",
-      "description": "Houses the largest collection of Ancient Egyptian artifacts, with over 120,000 cataloged objects.",
-      "desc2": "The Egyptian Museum in Tahrir is the oldest archaeological museum in the Middle East and served for decades as the primary center for displaying Egyptian antiquities. Its collections span all periods of Ancient Egyptian history.",
-      "established": "19th century",
-      "highlights": "Tutankhamun artifacts, early royal mummies",
-      "collections": "Pharaonic artifacts, papyri, statues, coffins",
-      "importance": "A foundational institution for Egyptology and a major reference for archaeological research"
+      "name": "Egyptian Museum, Cairo",
+      "location": "Cairo, Tahrir Square",
+      "description": "The oldest archaeological museum in the Middle East, housing more than 120,000 Pharaonic artifacts covering every epoch of ancient Egyptian history.",
+      "desc2": "Founded at the turn of the twentieth century, the Egyptian Museum in Cairo became the leading institution for the display and preservation of Pharaonic heritage. Its extraordinary collections formed the bedrock upon which modern Egyptology was built, and the museum remains an indispensable destination for researchers and specialists from around the world.",
+      "period": "19th Century",
+      "highlights": "Tutankhamun antiquities collection, the Pharaonic History Galleries, Royal Jewellery displays",
+      "collections": "Diverse Pharaonic antiquities, papyri, statuary and coffins, royal jewelry and regalia",
+      "importance": "A foundational pillar of museum-based Egyptology and one of the world's foremost archaeological scientific references."
+    },
+    "museum7": {
+      "name": "Alexandria National Museum",
+      "location": "Alexandria, Egypt",
+      "description": "Houses a rich collection of Pharaonic, Greco-Roman, and Coptic antiquities that illuminate the unique civilizational confluence that defined ancient Alexandria.",
+      "desc2": "The Alexandria National Museum contains artifacts that document Egypt's Pharaonic civilization alongside its interactions with the Mediterranean world, offering a broad view of the interplay between Pharaonic and Hellenistic art forms. Its collections include rare finds from the Nile Delta and Alexandria's coastline, making it an essential reference for the study of Egypt's remarkable era of cultural hybridity.",
+      "period": "19th Century",
+      "highlights": "Collection of obelisks and monumental statuary, Hellenistic artifacts bearing Pharaonic iconography",
+      "collections": "Pharaonic and Greco-Roman statuary, mosaics, engraved gemstones, pottery and glassware",
+      "importance": "Documents the singular epoch in which Pharaonic civilization encountered Hellenistic thought and art, embodying a rare model of civilizational coexistence."
+    },
+    "museum8": {
+      "name": "Memphis Open-Air Museum",
+      "location": "Mit Rahina, Giza",
+      "description": "An open-air museum set upon the ancient site of Memphis, Egypt's first capital, home to its most celebrated monument: the colossal recumbent statue of Ramesses II.",
+      "desc2": "The Memphis Open-Air Museum occupies the archaeological ground of Memphis, the capital founded by King Menes, unifier of Egypt. It brings together colossal statues and original architectural elements from the Old and New Kingdoms, allowing visitors a direct visual encounter with the defining monuments of the earliest Pharaonic capital.",
+      "period": "20th Century",
+      "highlights": "The colossal recumbent statue of Ramesses II, the alabaster sphinx, columns of the Temple of Ptah",
+      "collections": "Monumental statues in granite, limestone, and alabaster; inscribed panels; architectural elements from Memphite temples",
+      "importance": "Preserves the legacy of Memphis, Egypt's ancient founding capital, and stands as a living testament to the earliest centers of Pharaonic civilization."
+    },
+    "museum9": {
+      "name": "National Museum of Egyptian Civilization",
+      "location": "Cairo, Al-Fustat",
+      "description": "Houses the most precious royal collections of jewelry, ornaments, and gemstones crafted in ancient Pharaonic Egypt.",
+      "desc2": "This exceptional collection within the National Museum stands as one of its most defining features, embodying the extraordinary craftsmanship and refined artistic sensibility of ancient Egypt's goldsmiths and jewelers. The pieces include rare royal objects that reflect the symbolic role of jewelry in ancient Egyptian religious belief and coronation ritual.",
+      "period": "21st Century",
+      "highlights": "Jewelry of the Twelfth Dynasty from Dahshur, royal gold torques and bracelets",
+      "collections": "Gold and silver ornaments, faience and gemstone amulets, royal necklaces and diadems",
+      "importance": "Represents the pinnacle of Pharaonic artisanal creativity and reveals the religious and political significance of adornment in ancient Egypt."
+    },
+    "museum10": {
+      "name": "Kom Oshim Museum — Fayoum",
+      "location": "Fayoum, Egypt",
+      "description": "Presents the antiquities of the Greco-Roman town of Karanis and holds a unique collection of the celebrated Fayoum mummy portraits.",
+      "desc2": "Located on the edge of the Karanis archaeological field in the Fayoum, Kom Oshim Museum documents life in Egyptian communities during the Hellenistic and Roman periods. It is distinguished by its rare collection of Fayoum mummy portraits — encaustic or tempera paintings depicting mummy owners with a startling naturalism unparalleled in ancient art — forming a unique bridge between Pharaonic funerary tradition and Hellenistic pictorial style.",
+      "period": "20th Century",
+      "highlights": "Fayoum mummy portraits, models of domestic life and architecture from Karanis",
+      "collections": "Encaustic funerary panels, bronze statuary and objects, glass and ceramic vessels, papyri",
+      "importance": "A living witness to the Pharaonic-Hellenistic-Roman cultural synthesis, housing the finest examples of funerary portraiture in the ancient world."
     }
   },
   "section_unique_artifacts": {
@@ -1542,6 +1579,10 @@
         "themes": "Religion, Monotheism, Theology",
         "importance": "One of the earliest expressions of monotheistic thought in ancient history."
       }
+    },
+    "museum": {
+      "museum_page_title": "Museums Egyptian",
+      "museum_page_subtitle": "Discover the most important museums around the world that house authentic ancient Egyptian artifacts, providing insights into the rich history and culture of ancient Egypt."
     }
   },
   "footer": {
@@ -1565,7 +1606,10 @@
     "museum": "Museum",
     "favorites": {
       "added": " has been added to favorites",
-      "removed": " has been removed from favorites"
+      "removed": " has been removed from favorites",
+      "no_favorites_hint": "Browse destinations and tap the heart icon to save your favorites here.",
+      "explore_btn": "Explore destinations",
+      "remove": "Remove from favorites"
     },
     "loading_text": "Loading",
     "home_page_title": "Home Page",

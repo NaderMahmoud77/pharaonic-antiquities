@@ -3,7 +3,7 @@
     <div class="container mx-auto px-4">
       <div
         v-gsap.entrance.slide-left.stagger="{
-          duration: 1.5,
+          duration: 1,
           stagger: 0.6,
         }"
       >
@@ -34,7 +34,7 @@
       <div
         class="button-container flex m-[21px] mb-4"
         v-gsap.entrance.slide-left.stagger="{
-          duration: 1.5,
+          duration: 1,
           stagger: 0.6,
         }"
       >
@@ -67,7 +67,7 @@
           }"
           loop="true"
           v-gsap.entrance.slide-right.stagger="{
-            duration: 2,
+            duration: 1,
           }"
         >
           <SwiperSlide
@@ -80,7 +80,7 @@
               class="overflow-hidden transition-transform duration-500 hover:-translate-y-2"
             >
               <!-- Image -->
-              <img
+              <NuxtImg
                 :src="pap.image"
                 :alt="$t(pap.name)"
                 class="h-[268px] w-full"

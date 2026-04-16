@@ -2,14 +2,10 @@
   <section
     class="relative overflow-hidden min-h-screen text-center text-textsecondary"
   >
+    <!-- NavInHero -->
     <NavInHero />
 
     <!-- ─── Slides ────────────────────────────────────────────────── -->
-    <!--
-      FIX: v-show is on the <li> itself, not a child div.
-      Inactive slides become display:none and pointer-events:none,
-      so they can never intercept clicks intended for the active slide.
-    -->
     <ul>
       <li
         v-for="item in items"
@@ -20,7 +16,7 @@
         :aria-hidden="activeIndex !== item.index"
       >
         <!-- Background -->
-        <img :src="item.img" alt="" aria-hidden="true" class="slide-bg" />
+        <NuxtImg :src="item.img" alt="" aria-hidden="true" class="slide-bg" />
 
         <!-- Content -->
         <v-container fluid class="slide-content">
@@ -32,7 +28,7 @@
               >
                 {{ $t(item.label) }}
               </p>
-              <img
+              <NuxtImg
                 src="/images/hero/separator.svg"
                 alt=""
                 aria-hidden="true"
@@ -56,16 +52,12 @@
               {{ $t(item.desc) }}
             </p>
 
-            <!--
-              FIX: CTA is now in normal document flow inside the slide,
-              not absolutely positioned outside the stacking context.
-              z-index fights become irrelevant.
-            -->
+            <!-- CTA -->
             <NuxtLink
               to="/artifacts-3d"
-              class="cta-btn content-item delay-4 inline-block mt-8"
+              class="cta-btn content-item backdrop-blur-md delay-4 inline-flex items-center mt-8 px-5! py-2.5! gap-1 rounded-lg font-medium dark:text-secondary! hover:dark:text-primary! hover:text-secondary! border border-primaryTwo/30 dark:border-secondary/30 transition-all duration-200"
             >
-              {{ $t("links_nav.artifacts_3d") }}
+              <span>3D</span> {{ $t("links_nav.artifacts_3d") }}
             </NuxtLink>
           </div>
         </v-container>
@@ -86,7 +78,7 @@
 
     <!-- ─── Brand mark ────────────────────────────────────────────── -->
     <div
-      class=" brand-mark absolute bottom-10 z-50 w-[60px] bg-secondary! me-6! sm:me-8! md:me-15! lg:me-25!"
+      class="brand-mark absolute bottom-10 z-50 w-[60px] bg-secondary! me-6! sm:me-8! md:me-15! lg:me-25!"
       :class="lang === 'ar' ? 'left-0' : 'right-0'"
     >
       <img src="/images/hero/hero.png" alt="Logo" class="w-full!" />
@@ -94,6 +86,7 @@
   </section>
 </template>
 
+<!-- ==== JS ==== -->
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import { useLang } from "~/composables/UseChangeLang";
@@ -106,10 +99,10 @@ import { isRef } from "vue";
 const raw = isRef(heroItems) ? heroItems.value : heroItems;
 const items = raw.map((item, index) => ({ ...item, index }));
 
-// ── Language ──────────────────────────────────────────────────────────
+// ── Language
 const { lang } = useLang();
 
-// ── Slider — single source of truth ──────────────────────────────────
+// ── Slider — single source of truth
 const SLIDE_DURATION = 9000;
 const activeIndex = ref(0);
 let timer = null;
@@ -132,6 +125,7 @@ onMounted(() => resetTimer());
 onBeforeUnmount(() => clearInterval(timer)); // prevent memory leak
 </script>
 
+<!-- ==== Styles ==== -->
 <style scoped>
 /* ── Slide shell ──────────────────────────────────────────────────── */
 .slide {
@@ -140,10 +134,6 @@ onBeforeUnmount(() => clearInterval(timer)); // prevent memory leak
   display: grid;
   place-items: center;
   opacity: 0;
-  /*
-    Belt-and-suspenders: even if display:none somehow fails,
-    inactive slides cannot receive pointer events.
-  */
   pointer-events: none;
   transition: opacity 0.8s ease;
 }
@@ -151,7 +141,7 @@ onBeforeUnmount(() => clearInterval(timer)); // prevent memory leak
 .slide.is-active {
   opacity: 1;
   pointer-events: auto;
-  z-index: 1; /* lift active slide above transition ghost of previous */
+  z-index: 1;
 }
 
 /* ── Background zoom ──────────────────────────────────────────────── */
@@ -217,26 +207,24 @@ onBeforeUnmount(() => clearInterval(timer)); // prevent memory leak
 .cta-btn {
   position: relative;
   overflow: hidden;
-  padding: 0.75rem 1.5rem;
-  width: 150px;
-  border: 2px solid var(--color-secondary);
-  border-radius: 1rem;
-  font-weight: 600;
-  color: var(--color-secondary);
-  text-decoration: none;
-  transition: color 0.4s ease;
-  z-index: 2;
 }
 
 .cta-btn::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--color-secondary);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
   z-index: -1;
+}
+
+.dark .cta-btn::after {
+  background: var(--color-secondary);
+}
+
+.cta-btn::after {
+  background: var(--color-primaryTwo);
 }
 
 .cta-btn:hover {

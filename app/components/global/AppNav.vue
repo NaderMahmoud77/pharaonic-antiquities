@@ -5,7 +5,7 @@
     <div class="container mx-auto flex! items-center justify-between h-full">
       <!-- logo -->
       <a href="/">
-        <img
+        <NuxtImg
           src="/images/logo/logoHero.png"
           alt="Logo"
           class="object-cover w-[125px]"

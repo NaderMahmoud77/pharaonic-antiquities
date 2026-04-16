@@ -3,7 +3,7 @@
     <div class="container mx-auto px-4">
       <div
         v-gsap.entrance.slide-right.stagger="{
-          duration: 1.5,
+          duration: 1,
           stagger: 0.6,
         }"
       >
@@ -32,7 +32,7 @@
       <div
         class="d-flex justify-center mb-10"
         v-gsap.entrance.slide-left.stagger="{
-          duration: 1.5,
+          duration: 1,
           stagger: 0.6,
         }"
       >
@@ -67,7 +67,7 @@
               duration: 1.5,
             }"
           >
-            <img
+            <NuxtImg
               :src="artifact.image"
               :alt="$t(artifact.name)"
               class="w-full h-64 object-cover hover:scale-105 duration-300"

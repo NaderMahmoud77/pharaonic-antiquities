@@ -46,10 +46,11 @@
             <!-- Logo Container -->
             <div class="absolute inset-0 flex items-center justify-center">
               <div class="w-16 h-16 relative animate-float">
-                <img
+                <NuxtImg
                   src="/images/hero/hero.png"
                   alt="Logo"
                   class="w-full h-full object-contain drop-shadow-lg"
+                  preload
                 />
               </div>
             </div>
@@ -115,7 +116,7 @@ import { useRoute } from "vue-router";
 import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 
-const isPageLoading = ref(true); // true من البداية
+const isPageLoading = ref(true);
 const loadingText = ref(t("all.loading_text"));
 const route = useRoute();
 let dotInterval;
@@ -138,7 +139,7 @@ watch(isPageLoading, (newVal) => {
 onMounted(() => {
   setTimeout(() => {
     isPageLoading.value = false;
-  }, 1000);
+  }, 500);
 });
 
 // Show loader on route change

@@ -2,7 +2,7 @@
   <section class="px-4">
     <div
       v-gsap.entrance.slide-left.stagger="{
-        duration: 1.5,
+        duration: 1,
         stagger: 0.6,
       }"
     >
@@ -32,7 +32,7 @@
       <div
         class="container! mx-auto! max-w-[800px]!"
         v-gsap.entrance.slide-right.stagger="{
-          duration: 1.5,
+          duration: 1,
           stagger: 0.3,
         }"
       >

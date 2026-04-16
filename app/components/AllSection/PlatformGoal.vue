@@ -28,7 +28,7 @@
     >
       <div
         v-gsap.entrance.slide-right.stagger="{
-          duration: 1.5, // مدة أطول من default
+          duration: 1, // مدة أطول من default
           stagger: 0.6, // كل عنصر يتأخر عن اللي قبله 0.3s
         }"
         :class="
@@ -47,7 +47,7 @@
 
         <!-- Image -->
         <div>
-          <img
+          <NuxtImg
             src="/images/sections/masc.png"
             alt="Pharaonic Statue"
             class="w-[162px] sm:w-[220px] my-10 sm:mt-0 mx-auto"

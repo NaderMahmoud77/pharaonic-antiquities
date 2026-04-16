@@ -53,13 +53,13 @@
         :key="item.id"
         class="rounded-2xl shadow-sm dark:shadow-gray-300/20 overflow-hidden hover:-translate-y-1 transition-all cursor-pointer"
         v-gsap.entrance.slide-left.stagger="{
-          duration: 1.5,
+          duration: 1,
           stagger: 0.6,
         }"
       >
         <!-- IMAGE -->
         <div class="overflow-hidden">
-          <img
+          <NuxtImg
             :src="item.image"
             :alt="$t(item.name)"
             class="w-full h-60 object-cover hover:scale-105 transition-all duration-300"
