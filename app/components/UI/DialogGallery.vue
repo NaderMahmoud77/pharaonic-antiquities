@@ -39,12 +39,7 @@
 
             <!-- Image -->
             <div class="dialog-img-wrap">
-              <NuxtImg
-                :src="item.src"
-                :alt="item.name"
-                class="dialog-img"
-                loading="lazy"
-              />
+              <img :src="item.src" :alt="item.name" class="dialog-img" />
             </div>
           </div>
         </div>
@@ -55,12 +50,14 @@
 
 <!-- ======= SCRIPT ======= -->
 <script setup>
-import { ref, watch, onMounted, onUnmounted } from "vue";
-
 const dialog = ref(false);
 const item = ref({});
 
-const { $emitter } = useNuxtApp();
+let emitter = null;
+
+if (process.client) {
+  emitter = useNuxtApp().$emitter;
+}
 
 function close() {
   dialog.value = false;
@@ -68,19 +65,23 @@ function close() {
 
 // Prevent body scroll while dialog is open
 watch(dialog, (val) => {
-  document.body.style.overflow = val ? "hidden" : "";
+  if (process.client) {
+    document.body.style.overflow = val ? "hidden" : "";
+  }
 });
 
 onMounted(() => {
-  $emitter.on("openDialogGallery", (data) => {
+  emitter?.on("openDialogGallery", (data) => {
     item.value = data;
     dialog.value = true;
   });
 });
 
 onUnmounted(() => {
-  $emitter.off("openDialogGallery");
-  document.body.style.overflow = "";
+  emitter?.off("openDialogGallery");
+  if (process.client) {
+    document.body.style.overflow = "";
+  }
 });
 </script>
 
@@ -157,7 +158,6 @@ onUnmounted(() => {
   top: 14px;
   right: 14px;
   border: none;
-  
 }
 /* ── Title ─────────────────────────────────────── */
 .dialog-title {

@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="container mx-auto px-4 my-32!">
-      <div v-gsap.magnetic.strong class="cursor-pointer">
+      <div>
         <!-- TITLE -->
         <h2
           class="animate-pulse text-2xl md:text-4xl font-bold text-center text-primaryTwo dark:text-secondary mb-3"
@@ -42,6 +42,7 @@
               :alt="$t(temp.name)"
               class="w-full h-60 object-cover hover:scale-105 transition-all duration-300"
               loading="lazy"
+              format="webp"
             />
           </div>
 
@@ -55,18 +56,18 @@
 
             <div class="flex items-center gap-2 text-sm text-gray-500 mt-1">
               <div
-                class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+                class="w-7 h-7 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
               >
-                <v-icon size="16">mdi-timeline-clock</v-icon>
+                <v-icon :icon="mdiTimelineClock" size="16" />
               </div>
               {{ $t(temp.period) }}
             </div>
 
-            <div class="flex items-center gap-2 text-sm text-gray-500 mt-1">
+            <div class="flex items-center gap-2 text-sm text-textmain mt-1">
               <div
-                class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+                class="w-7 h-7 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
               >
-                <v-icon size="16">mdi-map-marker</v-icon>
+                <v-icon :icon="mdiMapMarker" size="16" />
               </div>
               {{ $t(temp.location) }}
             </div>
@@ -91,14 +92,16 @@
 
 <!-- =========== JS  =========== -->
 <script setup>
-import { useI18n } from "vue-i18n";
+import { mdiTimelineClock, mdiMapMarker } from "@mdi/js";
 const { t } = useI18n();
 // Page Title
 useHead({
   title: t("all.temples_page_title"),
 });
 // Museums Data
-import { temples } from "~/data/temples";
+const { data: temples } = await useAsyncData("temples", () =>
+  import("~/data/temples").then((m) => m.temples),
+);
 // Btn Show Deteils
 import BtnShowDeteils from "~/components/UI/BtnShowDeteils.vue";
 // Btn Favorite

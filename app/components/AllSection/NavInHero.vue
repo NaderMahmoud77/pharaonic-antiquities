@@ -58,9 +58,9 @@
     <!-- ========== Main Navbar ========== -->
     <div class="flex items-center justify-between container! mx-auto">
       <!-- Logo -->
-      <img
+      <NuxtImg
         src="/images/logo/logoHero.png"
-        class="w-[120px] sm:w-[125px] md:w-[170px] object-cover scale-125 md:-mr-6!"
+        class="w-[120px]! sm:w-[125px] md:w-[170px] h-[120px] md:h-[170px] object-cover scale-125 md:-mr-6!"
         alt="Logo"
       />
 
@@ -72,50 +72,77 @@
             <nuxt-link
               v-if="!link.items"
               :to="localePath(link.to)"
-              class="flex items-center gap-2 px-2 py-1 rounded hover:bg-primary/20! hover:text-secondary! transition-colors"
+              :prefetch="link.prefetch !== false"
+              class="flex items-center gap-2 relative px-3 py-2 rounded-lg transition-all duration-200 hover:bg-white/10! hover:text-secondary"
             >
-              <v-icon size="18">{{ link.icon }}</v-icon>
+              <v-icon :icon="link.icon" size="18" />
               {{ $t(link.title) }}
             </nuxt-link>
 
             <!-- Dropdown -->
-            <v-menu v-else open-on-hover>
-              <template v-slot:activator="{ props }">
+            <v-menu
+              v-else
+              open-on-hover
+              z-index="3000"
+              :open-delay="80"
+              :close-delay="120"
+            >
+              <template #activator="{ props, isActive }">
                 <div
                   v-bind="props"
-                  class="flex items-center gap-2 cursor-pointer px-2 py-1 rounded hover:bg-primary/20! hover:text-secondary! transition-colors"
+                  class="relative flex items-center gap-1.5 px-3 py-2 rounded-lg cursor-pointer select-none transition-all duration-200 group hover:bg-white/10 hover:text-secondary"
                 >
-                  <v-icon size="18">{{ link.icon }}</v-icon>
+                  <v-icon size="13" class="opacity-70">{{ link.icon }}</v-icon>
                   {{ $t(link.title) }}
-                  <v-icon size="16">mdi-chevron-down</v-icon>
+                  <v-icon
+                    :icon="mdiChevronDown"
+                    size="14"
+                    :class="[
+                      'transition-transform duration-300 ms-0.5',
+                      isActive ? 'rotate-180' : '',
+                    ]"
+                  />
                 </div>
               </template>
 
-              <v-list
-                class="w-[280px]! bg-[#F2F2F2]! dark:bg-primaryTwo/70! text-primaryTwo! dark:text-textsecondary!"
+              <!-- Dropdown panel — matches TheNavbar style -->
+              <div
+                :class="[
+                  'mt-1 min-w-[220px] rounded-2xl overflow-hidden border shadow-2xl',
+                  isDarkMode
+                    ? 'bg-primaryTwo/90 backdrop-blur-xl border-white/8 shadow-black/50'
+                    : 'bg-white/95 backdrop-blur-xl border-black/8 shadow-black/15',
+                ]"
               >
-                <v-list-item
+                <nuxt-link
                   v-for="child in link.items"
                   :key="child.title"
                   :to="localePath(child.to)"
-                  class="flex items-center justify-between gap-2 hover:bg-primary/20! transition-colors rounded px-3 py-2"
+                  :prefetch="link.prefetch !== false"
+                  :class="[
+                    'flex items-center gap-3 px-4 py-3',
+                    'text-[13px] font-semibold uppercase tracking-wide',
+                    'transition-all duration-200 group/item',
+                    lang === 'ar' ? 'flex-row-reverse' : '',
+                    isDarkMode
+                      ? 'text-textsecondary hover:text-secondary hover:bg-secondary/10'
+                      : 'text-textmain hover:text-primaryTwo hover:bg-primary/10',
+                  ]"
                 >
-                  <div
-                    class="flex items-center gap-2 mb-2"
-                    :class="lang == 'ar' ? 'justify-end!' : 'justify-start!'"
+                  <span
+                    :class="[
+                      'flex items-center justify-center w-7 h-7 rounded-lg flex-shrink-0',
+                      'transition-all duration-200',
+                      isDarkMode
+                        ? 'bg-secondary/10 text-secondary group-hover/item:bg-secondary/20'
+                        : 'bg-primary/10 text-primaryTwo group-hover/item:bg-primary/20',
+                    ]"
                   >
-                    <v-icon
-                      size="14"
-                      :class="lang === 'ar' ? 'order-2!' : 'order-1!'"
-                      >{{ child.icon }}</v-icon
-                    >
-                    <span :class="lang === 'ar' ? 'order-1!' : 'order-2!'">
-                      {{ $t(child.title) }}</span
-                    >
-                  </div>
-                  <v-divider />
-                </v-list-item>
-              </v-list>
+                    <v-icon size="13" :icon="child.icon" />
+                  </span>
+                  <span>{{ $t(child.title) }}</span>
+                </nuxt-link>
+              </div>
             </v-menu>
           </li>
         </ul>
@@ -124,21 +151,33 @@
       <!-- Toggle dark mode -->
       <BtnMode />
 
-      <!-- Show Drawer -->
-      <v-btn
-        class="bg-secondary! me-5! xl:hidden! hover:text-white! duration-400"
+      <!-- ===== Show Drawer ===== -->
+      <button
+        class="flex items-center gap-1.5 me-5! xl:hidden!"
+        :class="[
+          'h-[37px] px-3 rounded-xl',
+          'text-sm font-medium tracking-wide',
+          'transition-all duration-300 ease-out',
+          'hover:scale-105 active:scale-95 group',
+          isDarkMode
+            ? 'bg-secondary! text-primary! border border-primary/20! hover:shadow-lg hover:shadow-primary/20!'
+            : 'bg-primary! text-secondary! border border-secondary/20! hover:shadow-lg hover:shadow-secondary/20!',
+        ]"
         @click="toggleDrawer"
       >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
+        <v-icon :icon="mdiMenu" />
+      </button>
     </div>
   </div>
 </template>
 
 <!-- =============== JS =================== -->
 <script setup>
+// Icons
+import { mdiChevronDown, mdiPhoneOutline, mdiEmailOutline, mdiMenu } from "@mdi/js";
+// Dark Mode
+const { isDarkMode } = useDarkMode();
 import BtnMode from "../UI/BtnMode";
-import { useLang } from "../../composables/UseChangeLang";
 const localePath = useLocalePath();
 // Lang
 const { lang } = useLang();
@@ -152,30 +191,43 @@ const drawer = useDrawer();
 function toggleDrawer() {
   drawer.value = !drawer.value;
 }
-
+// Nav Links
 import { navLinks } from "~/data/navLinks";
 
 const contact = [
   {
     href: "tel:+01069208821",
-    icon: "mdi-phone-outline",
+    icon: mdiPhoneOutline,
     title: "01069208821",
   },
   {
     href: "mailto:pharaonic@antiquities.com",
-    icon: "mdi-email-outline",
+    icon: mdiEmailOutline,
     title: "pharaonic@antiquities.com",
   },
 ];
 </script>
 
 <!-- ====== Style ====== -->
-<style>
+<style scoped>
 .router-link-active {
-  background-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
-}
-.dark .router-link-active {
+  background-color: rgba(255, 255, 255, 0.12);
   color: var(--color-secondary);
+}
+
+.router-link-active::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 0.75rem;
+  right: 0.75rem;
+  height: 1px;
+  border-radius: 999px;
+  background: var(--color-secondary);
+  transform: scaleX(1);
+}
+
+.dark .router-link-active {
   background-color: color-mix(
     in oklab,
     var(--color-secondary) 30%,

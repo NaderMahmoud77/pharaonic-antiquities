@@ -4,9 +4,14 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   css: ["./app/assets/main.css"],
+
+  // Enable experimental payload extraction for better performance
+  experimental: {
+    payloadExtraction: true,
+  },
 
   app: {
     head: {
@@ -58,6 +63,8 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: "ar",
     langDir: "locales/",
+    // strategy: "prefix",
+    lazy: true,
     locales: [
       { code: "ar", name: "العربية", file: "ar.json" },
       { code: "en", name: "English", file: "en.json" },

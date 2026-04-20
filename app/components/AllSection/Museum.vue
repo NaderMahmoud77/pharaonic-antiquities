@@ -4,7 +4,7 @@
       <div
         v-gsap.entrance.slide-right.stagger="{
           duration: 1, // مدة أطول من default
-          stagger: 0.6, // كل عنصر يتأخر عن اللي قبله 0.3s
+          stagger: 0.4, // كل عنصر يتأخر عن اللي قبله 0.3s
         }"
       >
         <!-- TITLE -->
@@ -24,7 +24,7 @@
           ></div>
         </div>
 
-        <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+        <p class="text-center text-textmain max-w-2xl mx-auto mb-12">
           {{ $t(subtitle) }}
         </p>
       </div>
@@ -34,7 +34,7 @@
         class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
         v-gsap.entrance.slide-left.stagger="{
           duration: 1,
-          stagger: 0.6,
+          stagger: 0.4,
         }"
       >
         <div
@@ -43,7 +43,7 @@
           class="rounded-2xl shadow-sm dark:shadow-gray-300/20 overflow-hidden hover:-translate-y-1 transition-all cursor-pointer"
           v-gsap.entrance.slide-left.stagger="{
             duration: 1,
-            stagger: 0.8,
+            stagger: 0.4,
           }"
         >
           <!-- IMAGE -->
@@ -53,6 +53,7 @@
               :alt="$t(museum.name)"
               class="w-full h-60 object-cover hover:scale-105 transition-all duration-300"
               loading="lazy"
+              format="webp"
             />
           </div>
 
@@ -66,9 +67,9 @@
 
             <div class="flex items-center gap-2 text-sm text-gray-500 mt-1">
               <div
-                class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+                class="w-7 h-7 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
               >
-                <v-icon size="16">mdi-map-marker</v-icon>
+                <v-icon size="16" :icon="mdiMapMarker" />
               </div>
               {{ $t(museum.location) }}
             </div>
@@ -83,9 +84,9 @@
               aria-label="Visit official website"
             >
               <div
-                class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+                class="w-7 h-7 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
               >
-                <v-icon size="16">mdi-web</v-icon>
+                <v-icon :icon="mdiWeb" size="16" />
               </div>
               {{ $t("section_museums.visitWebsite") }}
             </a>
@@ -138,6 +139,8 @@
 
 <!-- =========== JS  =========== -->
 <script setup>
+// Icons
+import { mdiWeb, mdiMapMarker } from "@mdi/js";
 // Museums Data
 defineProps({
   data: Array,
@@ -150,7 +153,7 @@ import BtnShowDeteils from "../UI/BtnShowDeteils.vue";
 import BtnFavorites from "../UI/BtnFavorites.vue";
 
 // splice Words desc
-let truncateWords = (text, limit = 14) => {
+let truncateWords = (text, limit = 19) => {
   let words = text.split(/\s+/);
   return words.length > limit ? words.slice(0, limit).join(" ") + "..." : text;
 };

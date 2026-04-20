@@ -1,4 +1,4 @@
-export let hieroglyphic = [
+const hieroglyphic = [
   {
     id: "papyrus-1",
     name: "section_hieroglyphs.papyri_1.name",
@@ -272,3 +272,6 @@ export let hieroglyphic = [
     type: "inscriptions",
   },
 ];
+
+
+export default hieroglyphic;

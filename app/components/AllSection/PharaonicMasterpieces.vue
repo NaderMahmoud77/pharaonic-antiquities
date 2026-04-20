@@ -4,7 +4,7 @@
       <div
         v-gsap.entrance.slide-right.stagger="{
           duration: 1,
-          stagger: 0.6,
+          stagger: 0.4,
         }"
       >
         <!-- Title -->
@@ -23,7 +23,7 @@
             class="h-px w-20 bg-gradient-to-l from-transparent to-primaryTwo dark:to-secondary"
           ></div>
         </div>
-        <p class="text-center text-gray-600 max-w-2xl mx-auto mb-14">
+        <p class="text-center text-textmain max-w-2xl mx-auto mb-14">
           {{ $t("section_pharaonic_masterpieces.subtitle") }}
         </p>
       </div>
@@ -33,7 +33,7 @@
         class="d-flex justify-center mb-10"
         v-gsap.entrance.slide-left.stagger="{
           duration: 1,
-          stagger: 0.6,
+          stagger: 0.4,
         }"
       >
         <v-btn-toggle
@@ -64,10 +64,10 @@
           <div
             class="overflow-hidden"
             v-gsap.entrance.slide-right="{
-              duration: 1.5,
+              duration: 1,
             }"
           >
-            <NuxtImg
+            <img
               :src="artifact.image"
               :alt="$t(artifact.name)"
               class="w-full h-64 object-cover hover:scale-105 duration-300"
@@ -79,7 +79,7 @@
           <div
             class="p-4!"
             v-gsap.entrance.slide-right.stagger="{
-              duration: 1.5,
+              duration: 1,
               stagger: 0.3,
             }"
           >
@@ -94,7 +94,7 @@
               <div
                 class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
               >
-                <v-icon size="16">mdi-timeline-clock</v-icon>
+                <v-icon :icon="mdiTimelineClock" size="16" />
               </div>
               {{ $t(artifact.period) }}
             </div>
@@ -104,7 +104,7 @@
               <div
                 class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
               >
-                <v-icon size="16">mdi-map-marker</v-icon>
+                <v-icon :icon="mdiMapMarker" size="16" />
               </div>
               {{ $t(artifact.location) }}
             </div>
@@ -127,7 +127,7 @@
 
 <!-- ========= JS ========= -->
 <script setup>
-import { computed, ref } from "vue";
+import { mdiTimelineClock, mdiMapMarker } from "@mdi/js";
 // Btn Show Deteils
 import BtnShowDeteils from "../UI/BtnShowDeteils.vue";
 // Btn Favorite
@@ -143,7 +143,7 @@ let data = computed(() => {
 });
 
 // splice Words desc
-let truncateWords = (text, limit = 14) => {
+let truncateWords = (text, limit = 10) => {
   let words = text.split(/\s+/);
   return words.length > limit ? words.slice(0, limit).join(" ") + "..." : text;
 };

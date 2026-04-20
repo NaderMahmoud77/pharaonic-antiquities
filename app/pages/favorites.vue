@@ -1,13 +1,25 @@
 <template>
   <section>
     <div class="container mx-auto px-4 my-32!">
-      <div v-gsap.magnetic.strong class="cursor-pointer">
+      <div>
+        <!-- Title -->
         <h2
           class="animate-pulse text-2xl md:text-4xl font-bold text-center text-primaryTwo dark:text-secondary mb-3"
         >
           {{ $t("pages.favorite.title") }}
         </h2>
-        <p class="item text-center text-gray-600 max-w-2xl mx-auto mb-16!">
+        <!-- DECORATIVE LINE -->
+        <div dir="ltr" class="flex items-center justify-center gap-4 mb-6">
+          <div
+            class="h-px w-20 bg-gradient-to-r from-transparent to-primaryTwo dark:to-secondary"
+          ></div>
+          <div class="w-2 h-2 rotate-45 bg-primaryTwo dark:bg-secondary"></div>
+          <div
+            class="h-px w-20 bg-gradient-to-l from-transparent to-primaryTwo dark:to-secondary"
+          ></div>
+        </div>
+        <!-- SUBTITLE -->
+        <p class="item text-center text-textmain max-w-2xl mx-auto mb-16!">
           {{ $t("pages.favorite.desc") }}
         </p>
       </div>
@@ -21,7 +33,7 @@
         <div
           class="w-20 h-20 rounded-full flex items-center justify-center mb-6 bg-rose-50 dark:bg-rose-900/30 text-rose-400 dark:text-rose-300"
         >
-          <v-icon size="40">mdi-heart-off-outline</v-icon>
+          <v-icon size="40" :icon="mdiHeartOffOutline" />
         </div>
 
         <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-2">
@@ -39,7 +51,7 @@
           to="/"
           class="mt-8 inline-flex items-center gap-2 px-5! py-2.5! rounded-xl text-sm font-medium bg-primaryTwo! dark:bg-secondary! text-white! dark:text-gray-900! hover:opacity-90! transition-all"
         >
-          <v-icon size="16">mdi-compass-outline</v-icon>
+          <v-icon size="16" :icon="mdiCompassOutline" />
           {{ $t("all.favorites.explore_btn") }}
         </NuxtLink>
       </div>
@@ -53,7 +65,7 @@
           class="rounded-2xl shadow-sm dark:shadow-gray-300/20 overflow-hidden hover:-translate-y-1 transition-all cursor-pointer"
         >
           <div class="overflow-hidden">
-            <NuxtImg
+            <img
               :src="temp.image"
               :alt="safeT(temp.name)"
               class="w-full h-60 object-cover hover:scale-105 transition-all duration-300"
@@ -68,15 +80,23 @@
               {{ safeT(temp.name) }}
             </h3>
 
-            <p class="flex items-center gap-2 text-sm text-gray-500 mt-1">
-              <v-icon size="16">mdi-timeline-clock</v-icon>
+            <div v-if="temp.period" class="flex items-center gap-2 text-sm text-gray-500 mt-1">
+              <div
+                class="w-6 h-6 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+              >
+                <v-icon size="16" :icon="mdiTimelineClock" />
+              </div>
               {{ safeT(temp.period) }}
-            </p>
+            </div>
 
-            <p class="flex items-center gap-2 text-sm text-gray-500 mt-1">
-              <v-icon size="16">mdi-map-marker</v-icon>
+            <div class="flex items-center gap-2 text-sm text-gray-500 mt-1">
+              <div
+                class="w-6 h-6 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+              >
+                <v-icon size="16" :icon="mdiMapMarker" />
+              </div>
               {{ safeT(temp.location) }}
-            </p>
+            </div>
 
             <!--  safeT + truncate — no more crash on raw description text -->
             <p
@@ -90,7 +110,7 @@
               :title="$t('all.favorites.remove')"
               class="w-[34px] h-[34px] rounded-full flex items-center justify-center bg-white/80! dark:bg-[#1e2025]/80! text-[#E24B4A]! dark:text-[#F09595]! hover:bg-[#E24B4A]! dark:hover:bg-[#A32D2D]! hover:text-white! dark:hover:text-[#FCEBEB]! transition-all duration-200 active:scale-90!"
             >
-              <v-icon size="18">mdi-trash-can-outline</v-icon>
+              <v-icon size="18" :icon="mdiTrashCanOutline" />
             </button>
           </div>
         </div>
@@ -101,6 +121,15 @@
 
 <!-- ====== JS ====== -->
 <script setup>
+// Icons
+import {
+  mdiHeartOffOutline,
+  mdiCompassOutline,
+  mdiTimelineClock,
+  mdiMapMarker,
+  mdiTrashCanOutline,
+} from "@mdi/js";
+
 const { t } = useI18n();
 
 useHead({
@@ -109,7 +138,9 @@ useHead({
 
 // Load favorites once when the component is mounted
 const store = useFavoritesStore();
-await callOnce(() => store.loadFavorites());
+onMounted(() => {
+  store.loadFavorites();
+});
 
 const removeItem = (item) => {
   store.toggleFavorite(item); // toggleFavorite removes if already favorited

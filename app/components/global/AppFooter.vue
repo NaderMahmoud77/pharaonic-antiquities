@@ -2,12 +2,11 @@
   <v-footer
     app
     absolute
-    class="text-center d-flex flex-column ga-2 py-4 bg-[#F2F2F2]! dark:bg-[#12083a]/80! text-textmain! dark:text-white!"
+    class="text-center d-flex flex-column ga-2 py-4 bg-textsecondary! dark:bg-primaryTwo/80! text-textmain! dark:text-white!"
     color="indigo-lighten-1"
     v-gsap.entrance.slide-top.stagger="{
-      duration: 1.5,
-      stagger: 1,
-      threshold: 0.3,
+      duration: 1,
+      stagger: 0.4,
     }"
   >
     <!-- ── Social Icons ── -->
@@ -19,9 +18,11 @@
         :aria-label="social.label"
         class="group social-btn flex items-center justify-center w-10 h-10 rounded-xl border social-icon-btn transition-all duration-300 hover:-translate-y-1"
       >
-        <v-icon size="18" class="transition-colors duration-300">
-          {{ social.icon }}
-        </v-icon>
+        <v-icon
+          :icon="social.icon"
+          size="18"
+          class="transition-colors duration-300"
+        />
       </a>
     </div>
 
@@ -34,9 +35,7 @@
     <v-divider></v-divider>
 
     <!-- ── Copyright ── -->
-    <div
-      class="flex items-center gap-1.5 text-xs text-textmain/40 dark:text-white/30"
-    >
+    <div class="flex items-center gap-1.5 text-xs text-textmain">
       <v-icon size="12">mdi-copyright</v-icon>
       <span>{{ new Date().getFullYear() }}</span>
       <span class="mx-0.5">—</span>
@@ -49,11 +48,12 @@
 
 <!-- -------- JS -------- -->
 <script setup>
+import { mdiFacebook, mdiTwitter, mdiLinkedin, mdiInstagram } from "@mdi/js";
 const socials = [
-  { icon: "mdi-facebook", label: "Facebook" },
-  { icon: "mdi-twitter", label: "Twitter" },
-  { icon: "mdi-linkedin", label: "LinkedIn" },
-  { icon: "mdi-instagram", label: "Instagram" },
+  { icon: mdiFacebook, label: "Facebook" },
+  { icon: mdiTwitter, label: "Twitter" },
+  { icon: mdiLinkedin, label: "LinkedIn" },
+  { icon: mdiInstagram, label: "Instagram" },
 ];
 </script>
 

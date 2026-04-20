@@ -1,6 +1,6 @@
 <template>
   <section class="container mx-auto px-4 my-32!">
-    <div v-gsap.magnetic.strong class="cursor-pointer">
+    <div>
       <!-- TITLE -->
       <h2
         class="animate-pulse text-2xl md:text-4xl font-bold text-center text-primaryTwo dark:text-secondary mb-3"
@@ -18,7 +18,7 @@
         ></div>
       </div>
       <!-- SUBTITLE -->
-      <p class="item text-center text-gray-600 max-w-2xl mx-auto mb-16!">
+      <p class="item text-center text-textmain max-w-2xl mx-auto mb-16!">
         {{ $t("pages.royal_tombs.subtitle") }}
       </p>
     </div>
@@ -26,12 +26,12 @@
     <!-- Tombs Grid -->
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
       <article
-        v-for="tomb in paginatedTombs"
+        v-for="tomb in royalTombs"
         :key="tomb.id"
         class="rounded-2xl shadow-sm dark:shadow-gray-300/20 overflow-hidden hover:-translate-y-1 transition-all cursor-pointer"
         v-gsap.entrance.slide-left.stagger="{
           duration: 1, // مدة أطول من default
-          stagger: 0.6, // كل عنصر يتأخر عن اللي قبله 0.3s
+          stagger: 0.4, // كل عنصر يتأخر عن اللي قبله 0.3s
         }"
       >
         <!-- IMAGE -->
@@ -41,6 +41,7 @@
             :alt="$t(tomb.name)"
             class="w-full h-60 object-cover hover:scale-105 transition-all duration-300"
             loading="lazy"
+            format="webp"
           />
         </div>
 
@@ -52,15 +53,23 @@
             {{ $t(tomb.name) }}
           </h3>
 
-          <p class="flex items-center gap-2 text-sm text-gray-500 mt-1">
-            <v-icon size="16">mdi-timeline-clock</v-icon>
+          <div class="flex items-center gap-2 text-sm text-gray-500 mt-1">
+            <div
+              class="w-7 h-7 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+            >
+              <v-icon :icon="mdiTimelineClock" size="16" />
+            </div>
             {{ $t(tomb.period) }}
-          </p>
+          </div>
 
-          <p class="flex items-center gap-2 text-sm text-gray-500 mt-1">
-            <v-icon size="16">mdi-map-marker</v-icon>
+          <div class="flex items-center gap-2 text-sm text-gray-500 mt-1">
+            <div
+              class="w-7 h-7 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+            >
+              <v-icon :icon="mdiMapMarker" size="16" />
+            </div>
             {{ $t(tomb.location) }}
-          </p>
+          </div>
 
           <p
             class="text-gray-600 dark:text-gray-400 text-[15px] mb-4 line-clamp-3"
@@ -77,7 +86,7 @@
       </article>
     </div>
 
-    <!-- Pagination -->
+    <!-- Pagination
     <div class="flex justify-center mt-10">
       <v-pagination
         v-model="currentPage"
@@ -86,12 +95,14 @@
         size="large"
         circle
       />
-    </div>
+    </div> -->
   </section>
 </template>
 
+<!-- ===== JS ===== -->
 <script setup>
-import { useI18n } from "vue-i18n";
+import { mdiTimelineClock, mdiMapMarker } from "@mdi/js";
+
 const { t } = useI18n();
 // Head title
 useHead({
@@ -99,7 +110,9 @@ useHead({
 });
 
 // Data
-import { royalTombs } from "~/data/royalTombs";
+const { data: royalTombs } = await useAsyncData("royalTombs", () =>
+  import("~/data/royalTombs").then((m) => m.royalTombs),
+);
 // Btn Show Deteils
 import BtnShowDeteils from "~/components/UI/BtnShowDeteils.vue";
 // Btn Favorite
@@ -108,14 +121,14 @@ import BtnFavorites from "~/components/UI/BtnFavorites.vue";
 import { ref, computed } from "vue";
 
 // Pagination
-const currentPage = ref(1);
-const itemsPerPage = 6; // عدد العناصر لكل صفحة
+// const currentPage = ref(1);
+// const itemsPerPage = 6;
 
-const totalPages = computed(() => Math.ceil(royalTombs.length / itemsPerPage));
+// const totalPages = computed(() => Math.ceil(royalTombs.length / itemsPerPage));
 
-const paginatedTombs = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
-  return royalTombs.slice(start, end);
-});
+// const paginatedTombs = computed(() => {
+//   const start = (currentPage.value - 1) * itemsPerPage;
+//   const end = start + itemsPerPage;
+//   return royalTombs.slice(start, end);
+// });
 </script>

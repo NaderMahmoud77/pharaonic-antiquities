@@ -2,157 +2,198 @@
   <header
     class="bg-textsecondary! fixed top-0 left-0 z-2010 w-full h-[85px] dark:bg-primaryTwo/70! shadow-md! shadow-black/30 dark:shadow-gray-300/20 font-bold uppercase"
   >
-    <div class="container mx-auto flex! items-center justify-between h-full">
-      <!-- logo -->
-      <a href="/">
+    <div
+      class="container mx-auto flex items-center justify-between h-full px-4"
+    >
+      <!-- ── Logo ────────────────────────────────────────────────── -->
+      <a
+        href="/"
+        class="flex-shrink-0 transition-transform duration-300 hover:scale-105 active:scale-95"
+      >
         <NuxtImg
           src="/images/logo/logoHero.png"
           alt="Logo"
-          class="object-cover w-[125px]"
+          :class="[
+            'object-cover transition-all duration-500',
+            scrolled ? 'w-[100px]' : 'w-[125px]',
+          ]"
         />
       </a>
-      <!-- ============ navigation links ============ -->
-      <nav class="hidden xl:block text-textmain! dark:text-textsecondary!">
-        <ul class="flex items-center gap-2 text-[15px]">
+
+      <!-- ── Desktop Nav ─────────────────────────────────────────── -->
+      <nav class="hidden xl:block" aria-label="Main navigation">
+        <ul
+          class="flex items-center gap-1 text-[14px] font-semibold uppercase tracking-wide"
+        >
           <li v-for="link in navLinks" :key="link.title">
-            <!-- Link -->
+            <!-- Plain link -->
             <nuxt-link
               v-if="!link.items"
               :to="localePath(link.to)"
-              class="flex items-center gap-2 px-2 py-1 rounded hover:bg-primary/20! hover:text-primaryTwo! hover:dark:text-secondary! transition-colors"
+              :prefetch="link.prefetch !== false"
+              :class="[
+                'relative flex items-center gap-1.5 px-3 py-2 rounded-lg',
+                'transition-all duration-200 group',
+                isDarkMode
+                  ? 'text-textsecondary hover:text-secondary hover:bg-secondary/10!'
+                  : 'text-textmain hover:text-primaryTwo hover:bg-primary/15!',
+              ]"
             >
-              <v-icon size="15">{{ link.icon }}</v-icon>
+              <v-icon size="13" class="opacity-70">{{ link.icon }}</v-icon>
               {{ $t(link.title) }}
             </nuxt-link>
 
-            <!-- Dropdown -->
-            <v-menu v-else open-on-hover z-index="3000">
-              <template v-slot:activator="{ props }">
+            <!-- Dropdown link -->
+            <v-menu
+              v-else
+              open-on-hover
+              z-index="3000"
+              :open-delay="80"
+              :close-delay="120"
+            >
+              <template #activator="{ props, isActive }">
                 <div
                   v-bind="props"
-                  class="flex items-center gap-2 cursor-pointer px-2 py-1 rounded hover:bg-primary/20! hover:text-primaryTwo! hover:dark:text-secondary! transition-colors"
+                  :class="[
+                    'relative flex items-center gap-1.5 px-3 py-2 rounded-lg cursor-pointer',
+                    'transition-all duration-200 group select-none',
+                    isDarkMode
+                      ? 'text-textsecondary hover:text-secondary hover:bg-secondary/10'
+                      : 'text-textmain hover:text-primaryTwo hover:bg-primary/15',
+                  ]"
                 >
-                  <v-icon size="15">{{ link.icon }}</v-icon>
+                  <v-icon size="13" class="opacity-70">{{ link.icon }}</v-icon>
                   {{ $t(link.title) }}
-                  <v-icon size="16">mdi-chevron-down</v-icon>
+
+                  <v-icon
+                    :icon="mdiChevronDown"
+                    size="14"
+                    :class="[
+                      'transition-transform duration-300 ms-0.5',
+                      isActive ? 'rotate-180' : '',
+                    ]"
+                  />
                 </div>
               </template>
-              <v-list
-                class="w-[250px]! bg-textsecondary! dark:bg-primaryTwo/70! text-primaryTwo! dark:text-textsecondary!"
+
+              <!-- Dropdown panel -->
+              <div
+                :class="[
+                  'mt-1 min-w-[220px] rounded-2xl overflow-hidden',
+                  'border shadow-2xl',
+                  isDarkMode
+                    ? 'bg-primaryTwo/90 backdrop-blur-xl border-white/8 shadow-black/50'
+                    : 'bg-white/95 backdrop-blur-xl border-black/8 shadow-black/15',
+                ]"
               >
-                <v-list-item
+                <nuxt-link
                   v-for="child in link.items"
                   :key="child.title"
                   :to="localePath(child.to)"
-                  class="hover:bg-primary/20! transition-colors rounded px-3 py-2"
+                  :prefetch="link.prefetch !== false"
+                  :class="[
+                    'flex items-center gap-3 px-4 py-3',
+                    'text-[13px] font-semibold uppercase tracking-wide',
+                    'transition-all duration-200 group/item',
+                    lang === 'ar' ? 'flex-row-reverse' : '',
+                    isDarkMode
+                      ? 'text-textsecondary hover:text-secondary hover:bg-secondary/10'
+                      : 'text-textmain hover:text-primaryTwo hover:bg-primary/10',
+                  ]"
                 >
-                  <div
-                    class="flex items-center gap-2 mb-2"
-                    :class="lang == 'ar' ? 'justify-end!' : 'justify-start!'"
-                  >
-                    <v-icon
-                      size="14"
-                      :class="lang === 'ar' ? 'order-2!' : 'order-1!'"
-                      >{{ child.icon }}</v-icon
-                    >
-                    <span
-                      :class="lang === 'ar' ? 'order-1!' : 'order-2!'"
-                      class="text-[16px]!"
-                    >
-                      {{ $t(child.title) }}</span
-                    >
-                  </div>
-                  <v-divider />
-                </v-list-item>
-              </v-list>
+                  <span>
+                    <v-icon size="13">{{ child.icon }}</v-icon>
+                  </span>
+                  <span>{{ $t(child.title) }}</span>
+                </nuxt-link>
+              </div>
             </v-menu>
           </li>
         </ul>
       </nav>
 
-      <!-- ============ Lang And Mode ============ -->
-      <div class="flex gap-2">
-        <!-- Mode -->
+      <!-- ── Right Controls ─────────────────────────────────────── -->
+      <div class="flex items-center gap-2">
         <BtnMode />
-
-        <!-- Lang -->
-        <v-menu open-on-hover class="relative! z-2100!">
-          <template v-slot:activator="{ props: menu }">
-            <v-btn
-              color="secondary!"
-              class="text-primary! text-sm!"
-              v-bind="menu"
-            >
-              {{ $t("nav.lang") }}
-              <v-icon class="ms-1">mdi-web</v-icon>
-            </v-btn>
-          </template>
-          <v-list
-            class="dark:bg-primary/70! dark:text-secondary! text-textmain!"
-          >
-            <v-list-item
-              v-for="(item, index) in locales"
-              :key="index"
-              :value="index"
-              class="w-[150px]!"
-            >
-              <div
-                class="flex items-center gap-4 w-full"
-                :class="
-                  item.code === lang ? 'opacity-50! pointer-events-none!' : ''
-                "
-                @click="
-                  setLocale(item.code);
-                  addDirectionAndLang();
-                "
-              >
-                <img
-                  v-if="item.name === 'العربية'"
-                  src="/images/imgLangCuntry/eg-arabic.png"
-                  alt="cuntry"
-                  class="object-contain w-5"
-                />
-                <img
-                  v-else
-                  src="/images/imgLangCuntry/en-english.png"
-                  alt="cuntry"
-                  class="object-contain w-5"
-                />
-
-                <v-list-item-title>
-                  {{ item.name }}
-                </v-list-item-title>
-              </div>
-            </v-list-item>
-          </v-list>
-        </v-menu>
+        <BtnLang />
 
         <!-- ===== Show Drawer ===== -->
-        <v-btn class="bg-secondary! me-5! xl:hidden!" @click="toggleDrawer">
+        <button
+          class="flex items-center gap-1.5 me-5! xl:hidden!"
+          :class="[
+            'h-[37px] px-3 rounded-xl',
+            'text-sm font-medium tracking-wide',
+            'transition-all duration-300 ease-out',
+            'hover:scale-105 active:scale-95 group',
+            isDarkMode
+              ? 'bg-secondary! text-primary! border border-primary/20! hover:shadow-lg hover:shadow-primary/20!'
+              : 'bg-primary! text-secondary! border border-secondary/20! hover:shadow-lg hover:shadow-secondary/20!',
+          ]"
+          @click="toggleDrawer"
+        >
           <v-icon>mdi-menu</v-icon>
-        </v-btn>
+        </button>
       </div>
     </div>
   </header>
 </template>
 
-<!-- ------------ JS ---------------- -->
+<!-- ── JS ──────────────────────────────────────────────────────── -->
 <script setup>
-const localePath = useLocalePath();
-// Lang
-const { locales, setLocale } = useI18n();
-import { useLang } from "../../composables/UseChangeLang";
-let { addDirectionAndLang, lang } = useLang();
-
-// ========= Data =========
+// icons
+import { mdiChevronDown } from "@mdi/js";
 import { navLinks } from "~/data/navLinks";
-// Component
 import BtnMode from "../UI/BtnMode";
+import BtnLang from "../UI/BtnLang";
+
+const localePath = useLocalePath();
+const { isDarkMode } = useDarkMode();
+const { lang } = useLang();
 
 // Drawer
 const drawer = useDrawer();
-
 function toggleDrawer() {
   drawer.value = !drawer.value;
 }
+
+// Scroll-aware shrink
+const scrolled = ref(false);
+function onScroll() {
+  scrolled.value = window.scrollY > 30;
+}
+onMounted(() => window.addEventListener("scroll", onScroll, { passive: true }));
+onBeforeUnmount(() => window.removeEventListener("scroll", onScroll));
 </script>
+
+<!-- ── Style  -->
+<style scoped>
+.router-link-active {
+  color: var(--color-primaryTwo);
+  background-color: color-mix(in oklab, var(--color-primary) 20%, transparent);
+}
+
+.router-link-active::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 0.75rem;
+  right: 0.75rem;
+  height: 1px;
+  border-radius: 999px;
+  background: var(--color-primaryTwo);
+  transform: scaleX(1);
+}
+
+.dark .router-link-active {
+  color: var(--color-secondary);
+  background-color: color-mix(
+    in oklab,
+    var(--color-secondary) 15%,
+    transparent
+  );
+}
+
+.dark .router-link-active::after {
+  background: var(--color-secondary);
+}
+</style>

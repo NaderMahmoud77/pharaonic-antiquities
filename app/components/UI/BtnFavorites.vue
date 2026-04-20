@@ -8,19 +8,20 @@
       class="bg-primaryTwo/10! dark:bg-secondary/10! flex items-center justify-center"
     >
       <v-icon
+        :icon="isFav ? mdiHeart : mdiHeartOutline"
         :class="isFav ? 'text-red' : 'text-grey'"
         class="transition-colors duration-200"
         size="18"
-      >
-        {{ isFav ? "mdi-heart" : "mdi-heart-outline" }}
-      </v-icon>
+      />
     </v-btn>
   </div>
 </template>
 
-
 <!-- ===== JS ===== -->
 <script setup>
+// Icons
+import { mdiHeart, mdiHeartOutline } from "@mdi/js";
+// 
 const props = defineProps({
   item: {
     type: Object,

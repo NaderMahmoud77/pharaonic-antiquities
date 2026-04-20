@@ -4,7 +4,7 @@
       <div
         v-gsap.entrance.slide-left.stagger="{
           duration: 1,
-          stagger: 0.6,
+          stagger: 0.4,
         }"
       >
         <!-- Title -->
@@ -24,7 +24,7 @@
           ></div>
         </div>
 
-        <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+        <p class="text-center text-textmain max-w-2xl mx-auto mb-12">
           {{ $t("section_unique_artifacts.subtitle") }}
         </p>
       </div>
@@ -34,7 +34,7 @@
         class="button-container flex! m-[21px]!"
         v-gsap.entrance.slide-left.stagger="{
           duration: 1,
-          stagger: 0.6,
+          stagger: 0.4,
         }"
       >
         <button class="button-3d" @click="prevSlide">
@@ -69,7 +69,7 @@
           :loop="true"
           :modules="modules"
           v-gsap.entrance.slide-right="{
-            duration: 2,
+            duration: 1,
           }"
         >
           <SwiperSlide
@@ -78,11 +78,12 @@
             class="rounded-2xl mb-2 w-[330px] shadow-sm backdrop-blur-2xl dark:shadow-gray-300/20 overflow-hidden"
           >
             <div class="overflow-hidden">
-              <NuxtImg
+              <img
                 :src="artifact.image"
                 :alt="$t(artifact.name)"
                 class="w-full h-64 hover:scale-105 duration-300"
                 loading="lazy"
+                format="webp"
               />
             </div>
             <!-- ============= Content ============= -->
@@ -93,15 +94,23 @@
                 {{ $t(artifact.name) }}
               </h3>
 
-              <p class="flex items-center gap-2 text-sm text-gray-500 mt-1">
-                <v-icon size="16">mdi-timeline-clock</v-icon>
+              <div class="flex items-center gap-2 text-sm text-gray-500! mt-1">
+                <div
+                  class="w-7 h-7 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+                >
+                  <v-icon :icon="mdiTimelineClock" size="16" />
+                </div>
                 {{ $t(artifact.period) }}
-              </p>
+              </div>
 
-              <p class="flex items-center gap-2 text-sm text-gray-500 mt-1">
-                <v-icon size="16">mdi-map-marker</v-icon>
+              <div class="flex items-center gap-2 text-sm text-gray-500! mt-1">
+                <div
+                  class="w-7 h-7 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+                >
+<v-icon :icon="mdiMapMarker" size="16" />                </div>
                 {{ $t(artifact.location) }}
-              </p>
+              </div>
+
               <p
                 class="text-gray-600 dark:text-gray-400 text-[13px] my-3 px-4 text-center line-clamp-6"
               >
@@ -125,7 +134,7 @@
 
 <!-- ========== JS ========= -->
 <script setup>
-import { onMounted, ref } from "vue";
+import { mdiTimelineClock, mdiMapMarker } from "@mdi/js";
 
 // Btn Show Deteils
 import BtnShowDeteils from "../UI/BtnShowDeteils.vue";
@@ -215,7 +224,6 @@ onMounted(() => {
       slideShadows: false,
     };
 });
-console.log([] + []);
 // Data
 import { artifacts } from "~/data/uniqueArtifacts";
 

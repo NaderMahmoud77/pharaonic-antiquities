@@ -116,7 +116,7 @@ export const imageLayout = [
   {
     cols: 4,
     name: "Mummification Process Stone Panel",
-    src: "/images/pharaonic_artifacts/pharaonic8.jpg ",
+    src: "/images/pharaonic_artifacts/pharaonic8.jpg",
   },
   {
     cols: 8,

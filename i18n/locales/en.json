@@ -1149,8 +1149,12 @@
     }
   },
   "pages": {
+    "favorite": {
+      "title": "My Favorite Artifacts",
+      "desc": "A collection of my favorite artifacts from Ancient Egypt."
+    },
     "timeline": {
-      "subtitle": "More than 5,000 years of history",
+      "subtitle": "More than (5,000) years of history",
       "time_1": {
         "title": "Predynastic Period and Early Dynastic Period",
         "desc": "The inhabitants of the Nile Valley began to gather in two main regions: the Delta (Lower Egypt) and the southern region (Upper Egypt), particularly in Hierakonpolis. Archaeological evidence from Hierakonpolis points to several early rulers, including Narmer, the last king of the Predynastic Period, who conquered Lower Egypt and unified the country. He was succeeded by Horus Aha, who may have taken the name Menes, and Narmer founded the First Dynasty. Memphis was established as the capital to ensure control over the land. This period includes the First and Second Dynasties."
@@ -1609,7 +1613,8 @@
       "removed": " has been removed from favorites",
       "no_favorites_hint": "Browse destinations and tap the heart icon to save your favorites here.",
       "explore_btn": "Explore destinations",
-      "remove": "Remove from favorites"
+      "remove": "Remove from favorites",
+      "no_favorites": "No favorites yet"
     },
     "loading_text": "Loading",
     "home_page_title": "Home Page",

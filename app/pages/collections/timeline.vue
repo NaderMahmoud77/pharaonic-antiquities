@@ -7,7 +7,8 @@
           class="absolute top-1/2 left-1/2 font-semibold text-lg sm:text-4xl -translate-y-1/2 -translate-x-1/2 tracking-widest"
         >
           <h1 class="animate-pulse">Timeline</h1>
-          <p class="text-xl sm:text-3xl font-extralight text-textsecondary!">
+
+          <p class="text-xl sm:text-2xl font-extralight text-textsecondary!">
             {{ $t("pages.timeline.subtitle") }}
           </p>
         </div>
@@ -43,6 +44,7 @@
             :alt="$t(time.title)"
             class="mb-8!"
             loading="lazy"
+            format="webp"
           />
           <h1
             class="text-primaryTwo! dark:text-secondary! text-2xl font-semibold mb-4"
@@ -60,18 +62,15 @@
 
 <!-- ========= JS =======s== -->
 <script setup>
-import { useI18n } from "#imports";
+// Data
+import { timeline } from "~/data/timeline";
 
 const { t } = useI18n();
+let { lang } = useLang();
 // Page Title
 useHead({
   title: t("all.timelines_page_title"),
 });
-// Data
-import { timeline } from "~/data/timeline";
-
-import { useLang } from "../../composables/UseChangeLang";
-let { lang } = useLang();
 </script>
 
 <!-- ========= Style ========= -->

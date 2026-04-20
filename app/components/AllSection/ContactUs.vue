@@ -3,8 +3,8 @@
     <div class="container mx-auto px-4">
       <div
         v-gsap.entrance.slide-left.stagger="{
-          duration: 1.5,
-          stagger: 0.6,
+          duration: 1,
+          stagger: 0.4,
         }"
       >
         <!-- Title -->
@@ -23,9 +23,7 @@
             class="h-px w-20 bg-gradient-to-l from-transparent to-primaryTwo dark:to-secondary"
           ></div>
         </div>
-        <p
-          class="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-14"
-        >
+        <p class="text-center text-textmain max-w-2xl mx-auto mb-14">
           {{ $t("section_contactUs.subtitle") }}
         </p>
       </div>
@@ -37,8 +35,8 @@
         <!-- -------- Text -------- -->
         <div
           v-gsap.entrance.slide-right.stagger="{
-            duration: 1.5,
-            stagger: 0.6,
+            duration: 1,
+            stagger: 0.4,
           }"
         >
           <h1
@@ -54,9 +52,10 @@
 
           <div class="flex flex-col gap-3">
             <!-- Location -->
+            <!-- Location -->
             <div class="flex items-center gap-2">
               <v-icon
-                icon="mdi-map-marker-outline"
+                :icon="mdiMapMarkerOutline"
                 class="text-primaryTwo! dark:text-secondary!"
               />
               <p class="text-gray-400 sm:text-lg">
@@ -67,7 +66,7 @@
             <!-- Email -->
             <div class="flex items-center gap-2">
               <v-icon
-                icon="mdi-email-outline"
+                :icon="mdiEmailOutline"
                 class="text-primaryTwo! dark:text-secondary!"
               />
               <p class="text-gray-400 sm:text-lg">pharaonic@antiquities.com</p>
@@ -76,7 +75,7 @@
             <!-- Phone -->
             <div class="flex items-center gap-2">
               <v-icon
-                icon="mdi-phone-outline"
+                :icon="mdiPhoneOutline"
                 class="text-primaryTwo! dark:text-secondary!"
               />
               <p class="text-gray-400 sm:text-lg" dir="ltr">+20 1069208821</p>
@@ -88,8 +87,8 @@
           <div
             class="text-primaryTwo! dark:text-textsecondary! bg-textsecondary dark:bg-[#ffffff1a] p-6! rounded-bl-4xl! rounded-tr-4xl!"
             v-gsap.entrance.slide-left.stagger="{
-              duration: 1.5,
-              stagger: 0.6,
+              duration: 1,
+              stagger: 0.4,
             }"
           >
             <div class="flex gap-2">
@@ -134,6 +133,11 @@
     </div>
   </section>
 </template>
+
+<!-- ------ JS ------- -->
+<script setup>
+import { mdiMapMarkerOutline, mdiEmailOutline, mdiPhoneOutline } from "@mdi/js";
+</script>
 
 <!-- ------ style ------- -->
 <style scoped>

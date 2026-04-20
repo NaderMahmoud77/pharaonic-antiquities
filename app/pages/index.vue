@@ -4,7 +4,7 @@
     <HeroSection />
     <PlatformGoal />
     <Museum
-      :data="museums.slice(0, 6)"
+      :data="featuredMuseums"
       title="section_museums.museumsTitle"
       subtitle="section_museums.museumsSubtitle"
     />
@@ -27,7 +27,6 @@
 
 <!-- ============= JS =============== -->
 <script setup>
-import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 
 useHead({
@@ -35,16 +34,36 @@ useHead({
 });
 // Components
 import HeroSection from "~/components/AllSection/HeroSection.vue";
+
 import PlatformGoal from "~/components/AllSection/PlatformGoal.vue";
-import Museum from "~/components/AllSection/Museum.vue";
-import UniqueArtifacts from "~/components/AllSection/UniqueArtifacts.vue";
-import PharaonicMasterpieces from "~/components/AllSection/PharaonicMasterpieces.vue";
-import PapyriAndSymbols from "~/components/AllSection/PapyriAndSymbols.vue";
-import RoyalMummies from "~/components/AllSection/RoyalMummies.vue";
-import ContactUs from "~/components/AllSection/ContactUs.vue";
+
+const Museum = defineAsyncComponent(
+  () => import("~/components/AllSection/Museum.vue"),
+);
+
+const UniqueArtifacts = defineAsyncComponent(
+  () => import("~/components/AllSection/UniqueArtifacts.vue"),
+);
+
+const PharaonicMasterpieces = defineAsyncComponent(
+  () => import("~/components/AllSection/PharaonicMasterpieces.vue"),
+);
+
+const PapyriAndSymbols = defineAsyncComponent(
+  () => import("~/components/AllSection/PapyriAndSymbols.vue"),
+);
+
+const RoyalMummies = defineAsyncComponent(
+  () => import("~/components/AllSection/RoyalMummies.vue"),
+);
+
+const ContactUs = defineAsyncComponent(
+  () => import("~/components/AllSection/ContactUs.vue"),
+);
 
 // Data
 import { papyri } from "~/data/papyri_hieroglyphs";
 import { sacredSymbols } from "~/data/sacred_symbols";
 import { museums } from "~/data/museums";
+const featuredMuseums = computed(() => museums.slice(0, 6));
 </script>

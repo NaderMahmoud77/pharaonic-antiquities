@@ -8,8 +8,10 @@
         <div
           class="absolute top-1/2 left-1/2 font-semibold text-lg sm:text-4xl -translate-y-1/2 -translate-x-1/2 tracking-widest"
         >
-          <h1 class="text-bold">{{ $t("pages.hieroglyphic.title") }}</h1>
-          <p class="text-lg sm:text-3xl font-extralight text-textsecondary!">
+          <h1 class="text-bold animate-pulse">
+            {{ $t("pages.hieroglyphic.title") }}
+          </h1>
+          <p class="text-lg sm:text-2xl font-extralight text-textsecondary!">
             {{ $t("pages.hieroglyphic.subtitle") }}
           </p>
         </div>
@@ -28,7 +30,11 @@
         <template v-slot:item="{ props, item }">
           <v-list-item v-bind="props" :title="null">
             <template #prepend>
-              <v-icon size="18">{{ item.raw.icon }}</v-icon>
+              <v-icon
+                size="18"
+                :icon="item.raw.icon"
+                class="text-primaryTwo! dark:text-secondary!"
+              />
             </template>
 
             <v-list-item-title>
@@ -39,7 +45,11 @@
 
         <template #selection="{ item }">
           <div class="flex items-center gap-2">
-            <v-icon size="18">{{ item.raw.icon }}</v-icon>
+            <v-icon
+              size="18"
+              :icon="item.raw.icon"
+              class="text-primaryTwo! dark:text-secondary!"
+            />
             <span>{{ item.raw.title }}</span>
           </div>
         </template>
@@ -54,12 +64,12 @@
         class="rounded-2xl shadow-sm dark:shadow-gray-300/20 overflow-hidden hover:-translate-y-1 transition-all cursor-pointer"
         v-gsap.entrance.slide-left.stagger="{
           duration: 1,
-          stagger: 0.6,
+          stagger: 0.4,
         }"
       >
         <!-- IMAGE -->
         <div class="overflow-hidden">
-          <NuxtImg
+          <img
             :src="item.image"
             :alt="$t(item.name)"
             class="w-full h-60 object-cover hover:scale-105 transition-all duration-300"
@@ -75,8 +85,12 @@
             {{ $t(item.name) }}
           </h3>
 
-          <div class="flex items-center text-gray-500 text-sm mb-3">
-            <v-icon class="mr-1">mdi-map-marker</v-icon>
+          <div class="flex items-center gap-2 text-sm text-gray-500 mt-1">
+            <div
+              class="w-6 h-6 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+            >
+              <v-icon :icon="mdiMapMarker" size="16" />
+            </div>
             {{ $t(item.location) }}
           </div>
 
@@ -98,8 +112,7 @@
 
 <!-- ======= JS ======== -->
 <script setup>
-import { ref, computed } from "vue";
-import { useI18n } from "vue-i18n";
+import { mdiFileDocumentOutline, mdiFormatText, mdiMapMarker } from "@mdi/js";
 let { t } = useI18n();
 // Head Title
 useHead({
@@ -107,7 +120,10 @@ useHead({
 });
 
 // Data
-import { hieroglyphic } from "~/data/hieroglyphicPage";
+const { data: hieroglyphic } = await useAsyncData("hieroglyphic", () =>
+  import("~/data/hieroglyphicPage").then((m) => m.default),
+);
+
 // Btns
 import BtnFavorites from "~/components/UI/BtnFavorites.vue";
 import BtnShowDeteils from "~/components/UI/BtnShowDeteils.vue";
@@ -122,12 +138,12 @@ let truncateWords = (text, limit = 14) => {
 const items = [
   {
     title: t("pages.hieroglyphic.papyri"),
-    icon: "mdi-file-document-outline",
+    icon: mdiFileDocumentOutline,
     value: "papyrus",
   },
   {
     title: t("pages.hieroglyphic.inscriptions"),
-    icon: "mdi-format-text",
+    icon: mdiFormatText,
     value: "inscriptions",
   },
 ];
@@ -136,7 +152,7 @@ const model = ref(items[0].value);
 
 // Filtered Data Based on Toggle Selection
 let data = computed(() => {
-  return hieroglyphic.filter((item) => item.type === model.value);
+  return hieroglyphic.value?.filter((item) => item.type === model.value);
 });
 </script>
 

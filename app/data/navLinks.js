@@ -1,50 +1,81 @@
+import {
+  mdiHome,
+  mdiBookMultiple,
+  mdiTimelineClockOutline,
+  mdiAlphabetical,
+  mdiBank,
+  mdiTempleBuddhist,
+  mdiCastle,
+  mdiImageMultiple,
+  mdiDomain,
+  mdiCubeScan,
+  mdiHeartOutline,
+} from "@mdi/js";
+
 export const navLinks = [
-  { title: "links_nav.home", to: "/", icon: "mdi-home" },
+  {
+    title: "links_nav.home",
+    to: "/",
+    icon: mdiHome,
+  },
 
   {
     title: "links_nav.collections.label",
-    icon: "mdi-book-multiple",
+    icon: mdiBookMultiple,
     items: [
       {
         title: "links_nav.collections.sub.collections_timeline",
         to: "/collections/timeline",
-        icon: "mdi-timeline-clock-outline",
+        icon: mdiTimelineClockOutline,
       },
       {
         title: "links_nav.collections.sub.collections_hieroglyphic_writing",
         to: "/collections/hieroglyphic",
-        icon: "mdi-alphabetical",
+        icon: mdiAlphabetical,
       },
     ],
   },
 
   {
     title: "links_nav.relics.label",
-    icon: "mdi-bank",
+    icon: mdiBank,
     items: [
       {
         title: "links_nav.relics.sub.relics_temples",
         to: "/relics/temples",
-        icon: "mdi-temple-buddhist",
+        icon: mdiTempleBuddhist,
       },
       {
         title: "links_nav.relics.sub.relics_royal_tombs",
         to: "/relics/royal-tombs",
-        icon: "mdi-castle",
+        icon: mdiCastle,
       },
     ],
   },
 
-  { title: "links_nav.gallery", to: "/gallery", icon: "mdi-image-multiple" },
-  { title: "links_nav.museums", to: "/museums", icon: "mdi-domain" },
+  {
+    title: "links_nav.gallery",
+    to: "/gallery",
+    icon: mdiImageMultiple,
+    prefetch: false,
+  },
+
+  {
+    title: "links_nav.museums",
+    to: "/museums",
+    icon: mdiDomain,
+  },
+
   {
     title: "links_nav.artifacts_3d",
     to: "/artifacts-3d",
-    icon: "mdi-cube-scan",
+    icon: mdiCubeScan,
+    prefetch: false,
   },
+
   {
     title: "links_nav.favorites",
     to: "/favorites",
-    icon: "mdi-heart-outline",
+    icon: mdiHeartOutline,
   },
 ];

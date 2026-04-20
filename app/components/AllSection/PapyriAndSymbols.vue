@@ -4,7 +4,7 @@
       <div
         v-gsap.entrance.slide-left.stagger="{
           duration: 1,
-          stagger: 0.6,
+          stagger: 0.4,
         }"
       >
         <!-- Title -->
@@ -23,9 +23,7 @@
             class="h-px w-20 bg-gradient-to-l from-transparent to-primaryTwo dark:to-secondary"
           ></div>
         </div>
-        <p
-          class="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-14"
-        >
+        <p class="text-center text-textmain max-w-2xl mx-auto mb-14">
           {{ $t(props.subtitle) }}
         </p>
       </div>
@@ -35,7 +33,7 @@
         class="button-container flex m-[21px] mb-4"
         v-gsap.entrance.slide-left.stagger="{
           duration: 1,
-          stagger: 0.6,
+          stagger: 0.4,
         }"
       >
         <button class="button-3d" @click="prevSlide">
@@ -65,7 +63,7 @@
             640: { slidesPerView: 2, spaceBetween: 20 }, // الهواتف الكبيرة / تابلت صغير
             1024: { slidesPerView: 3, spaceBetween: 30 }, // شاشات متوسطه / لابتوب
           }"
-          loop="true"
+          :loop="true"
           v-gsap.entrance.slide-right.stagger="{
             duration: 1,
           }"
@@ -80,7 +78,7 @@
               class="overflow-hidden transition-transform duration-500 hover:-translate-y-2"
             >
               <!-- Image -->
-              <NuxtImg
+              <img
                 :src="pap.image"
                 :alt="$t(pap.name)"
                 class="h-[268px] w-full"
@@ -100,9 +98,9 @@
                   class="flex items-center justify-center gap-2 text-sm text-gray-500 mt-1"
                 >
                   <div
-                    class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+                    class="w-7 h-7 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
                   >
-                    <v-icon size="16">mdi-timeline-clock</v-icon>
+                    <v-icon :icon="mdiTimelineClock" size="16" />
                   </div>
                   {{ $t(pap.period) }}
                 </div>
@@ -112,9 +110,9 @@
                   class="flex items-center justify-center gap-2 text-sm text-gray-500 mt-1"
                 >
                   <div
-                    class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
+                    class="w-7 h-7 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
                   >
-                    <v-icon size="16">mdi-map-marker</v-icon>
+                    <v-icon :icon="mdiMapMarker" size="16" />
                   </div>
                   {{ $t(pap.location) }}
                 </div>
@@ -145,6 +143,7 @@
 
 <!-- ============ JS ============= -->
 <script setup>
+import { mdiTimelineClock, mdiMapMarker } from "@mdi/js";
 // Btn Show Deteils
 import BtnShowDeteils from "../UI/BtnShowDeteils.vue";
 // Btn Favorite

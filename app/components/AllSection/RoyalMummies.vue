@@ -3,7 +3,7 @@
     <div
       v-gsap.entrance.slide-left.stagger="{
         duration: 1,
-        stagger: 0.6,
+        stagger: 0.4,
       }"
     >
       <!-- Title -->
@@ -23,7 +23,7 @@
         ></div>
       </div>
 
-      <p class="text-center text-gray-600 max-w-2xl mx-auto mb-20! mt-3">
+      <p class="text-center text-textmain max-w-2xl mx-auto mb-20! mt-3">
         {{ $t("section_royal_mummies.subtitle") }}
       </p>
     </div>
@@ -74,7 +74,7 @@
                 <v-scroll-x-transition mode="out-in" appear>
                   <v-sheet
                     :key="currentIndex"
-                    rounded="xl"
+                    rounded="lg"
                     class="bg-textsecondary! dark:bg-primaryTwo/70! shadow-md! shadow-black/30! dark:shadow-gray-300/20! py-1! text-primary! dark:text-secondary!"
                   >
                     <v-list-item

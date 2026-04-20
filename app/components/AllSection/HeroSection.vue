@@ -16,15 +16,25 @@
         :aria-hidden="activeIndex !== item.index"
       >
         <!-- Background -->
-        <NuxtImg :src="item.img" alt="" aria-hidden="true" class="slide-bg" />
+        <NuxtImg
+          :src="item.img"
+          alt=""
+          aria-hidden="true"
+          class="slide-bg"
+          format="webp"
+          :loading="activeIndex === 0 ? 'eager' : 'lazy'"
+          :fetchpriority="activeIndex === 0 ? 'high' : 'low'"
+          :preload="activeIndex === 0"
+          decoding="async"
+        />
 
         <!-- Content -->
-        <v-container fluid class="slide-content">
+        <div class="slide-content container mx-auto px-4">
           <div class="relative z-10 tracking-wider container mx-auto">
             <!-- Label -->
             <div class="content-item delay-1 text-center mb-8">
               <p
-                class="text-sm font-semibold uppercase text-secondary tracking-[0.3em]"
+                class="text-sm font-semibold uppercase text-secondary! tracking-[0.3em]"
               >
                 {{ $t(item.label) }}
               </p>
@@ -34,6 +44,8 @@
                 aria-hidden="true"
                 class="mx-auto mt-2"
                 :class="$i18n.locale === 'ar' ? 'w-[70px]' : 'w-[100px]'"
+                format="webp"
+                quality="70"
               />
             </div>
 
@@ -60,7 +72,7 @@
               <span>3D</span> {{ $t("links_nav.artifacts_3d") }}
             </NuxtLink>
           </div>
-        </v-container>
+        </div>
       </li>
     </ul>
 
@@ -81,15 +93,13 @@
       class="brand-mark absolute bottom-10 z-50 w-[60px] bg-secondary! me-6! sm:me-8! md:me-15! lg:me-25!"
       :class="lang === 'ar' ? 'left-0' : 'right-0'"
     >
-      <img src="/images/hero/hero.png" alt="Logo" class="w-full!" />
+      <NuxtImg src="/images/hero/hero.png" alt="Logo" class="w-full!" />
     </div>
   </section>
 </template>
 
 <!-- ==== JS ==== -->
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
-import { useLang } from "~/composables/UseChangeLang";
 import NavInHero from "~/components/AllSection/NavInHero.vue";
 
 // In HeroSection.vue <script setup>
@@ -164,7 +174,7 @@ onBeforeUnmount(() => clearInterval(timer)); // prevent memory leak
     transform: scale(1);
   }
   to {
-    transform: scale(1.15);
+    transform: scale(1.08);
   }
 }
 
@@ -183,13 +193,13 @@ onBeforeUnmount(() => clearInterval(timer)); // prevent memory leak
   animation-delay: 0.4s;
 }
 .delay-2 {
-  animation-delay: 1.4s;
+  animation-delay: 1s;
 }
 .delay-3 {
-  animation-delay: 2.4s;
+  animation-delay: 2s;
 }
 .delay-4 {
-  animation-delay: 3.4s;
+  animation-delay: 3s;
 }
 
 @keyframes rise {
@@ -260,7 +270,7 @@ onBeforeUnmount(() => clearInterval(timer)); // prevent memory leak
 .brand-mark::after {
   content: "";
   position: absolute;
-  inset: -2px;
+  inset: 0px;
   border: 1px solid var(--color-secondary);
   animation: spin 13s linear infinite;
 }

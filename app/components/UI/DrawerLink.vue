@@ -1,6 +1,7 @@
 <template>
   <ClientOnly>
     <v-navigation-drawer
+      :temporary="true"
       v-model="open"
       width="350"
       class="bg-[#F2F2F2]! dark:bg-primaryTwo/90! z-2200! text-primaryTwo! dark:text-[#F2F2F2]! border-r! border-primary! dark:border-secondary!"
@@ -161,12 +162,15 @@
             </g>
           </svg>
         </v-btn>
+        <!--  -->
+        <!-- <BtnMode /> -->
       </div>
       <!-- Logo -->
-      <NuxtImg
+      <img
         src="/images/logo/logoHero.png"
         alt="logo"
         class="w-[120px] my-4 mx-auto"
+        loading="lazy"
       />
 
       <v-divider />
@@ -174,7 +178,11 @@
       <!-- Links Pages -->
       <div class="text-center my-4">
         <h3>{{ $t("drawer.page") }}</h3>
-        <v-icon class="animate-bounce mt-2">mdi mdi-chevron-double-down</v-icon>
+        <v-icon
+          class="animate-bounce mt-2"
+          size="20"
+          :icon="mdiChevronDoubleDown"
+        />
       </div>
 
       <!-- Links Pages -->
@@ -223,27 +231,36 @@
       <h1 class="font-medium text-2xl text-center my-6">
         {{ $t("drawer.follow") }}
       </h1>
-      <div class="d-flex justify-center ga-3">
+      <div class="d-flex justify-center gap-3 mb-4">
         <v-btn
           v-for="icon in icons"
           :key="icon"
           :icon="icon"
           density="comfortable"
           variant="text"
-        ></v-btn>
+        />
       </div>
     </v-navigation-drawer>
   </ClientOnly>
 </template>
 
+<!-- =========== JS =========== -->
 <script setup>
+const { toggleDarkMode, isDarkMode } = useDarkMode();
+
+import {
+  mdiFacebook,
+  mdiTwitter,
+  mdiInstagram,
+  mdiLinkedin,
+  mdiChevronDoubleDown,
+} from "@mdi/js";
 // =========== Data ===========
 import { navLinks } from "~/data/navLinks";
-// Mode
-import { useDarkMode } from "../../composables/UseDarkMode";
-const { toggleDarkMode, isDarkMode } = useDarkMode();
+// Btn Mode
+// import BtnMode from "./BtnMode.vue";
+
 // Lang
-import { useLang } from "../../composables/UseChangeLang";
 const { lang } = useLang();
 
 // Drawer
@@ -253,11 +270,9 @@ function toggleDrawer() {
 }
 
 // Links Groups
-import { ref } from "vue";
-
 const openGroups = ref([]);
 openGroups.value = navLinks.map(() => false);
 
 // Icon
-const icons = ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"];
+const icons = [mdiFacebook, mdiTwitter, mdiInstagram, mdiLinkedin];
 </script>

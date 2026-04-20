@@ -15,12 +15,7 @@
               <div
                 class="bg-textmain/30! dark:bg-textsecondary! p-1! mt-4 sm:mt-0"
               >
-                <NuxtImg
-                  :src="item.image"
-                  :alt="$t(item.name)"
-                  class="w-full"
-                  loading="lazy"
-                />
+                <img :src="item.image" :alt="$t(item.name)" class="w-full" />
               </div>
             </div>
             <!-- Text Content -->
@@ -122,25 +117,6 @@
                   </strong>
                   {{ $t(item.museum) }}
                 </li>
-
-                <!-- 🌐 WEBSITE BUTTON -->
-                <!-- <li v-if="item.website">
-                  <a
-                    v-if="item.website"
-                    :href="item.website"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center gap-2 w-fit text-sm text-gray-500"
-                    aria-label="Visit official website"
-                  >
-                    <div
-                      class="w-8 h-8 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center"
-                    >
-                      <v-icon size="16">mdi-web</v-icon>
-                    </div>
-                    {{ $t("section_museums.visitWebsite") }}
-                  </a>
-                </li> -->
               </ul>
             </div>
           </div>
@@ -152,7 +128,8 @@
             @click="dialog = false"
           >
             <v-icon
-              class="mdi mdi-close text-primaryTwo!z dark:text-secondary!"
+              :icon="mdiClose"
+              class="text-primaryTwo! dark:text-secondary!"
             />
           </v-btn>
         </div>
@@ -163,7 +140,7 @@
 
 <!-- ---------- JS --------- -->
 <script setup>
-import { ref, onMounted } from "vue";
+import { mdiClose } from "@mdi/js";
 let dialog = ref(false);
 let item = ref({});
 
@@ -177,7 +154,6 @@ onMounted(() => {
 });
 
 // Lang
-import { useLang } from "../../composables/UseChangeLang";
 let { lang } = useLang();
 
 // Button Favorites
