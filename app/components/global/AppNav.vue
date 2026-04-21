@@ -29,7 +29,7 @@
             <!-- Plain link -->
             <nuxt-link
               v-if="!link.items"
-              :to="localePath(link.to)"
+              :to="$localePath(link.to)"
               :prefetch="link.prefetch !== false"
               :class="[
                 'relative flex items-center gap-1.5 px-3 py-2 rounded-lg',
@@ -39,7 +39,7 @@
                   : 'text-textmain hover:text-primaryTwo hover:bg-primary/15!',
               ]"
             >
-              <v-icon size="13" class="opacity-70">{{ link.icon }}</v-icon>
+              <v-icon :icon="link.icon" size="13" class="opacity-70" />
               {{ $t(link.title) }}
             </nuxt-link>
 
@@ -62,7 +62,7 @@
                       : 'text-textmain hover:text-primaryTwo hover:bg-primary/15',
                   ]"
                 >
-                  <v-icon size="13" class="opacity-70">{{ link.icon }}</v-icon>
+                  <v-icon :icon="link.icon" size="13" class="opacity-70" />
                   {{ $t(link.title) }}
 
                   <v-icon
@@ -89,7 +89,7 @@
                 <nuxt-link
                   v-for="child in link.items"
                   :key="child.title"
-                  :to="localePath(child.to)"
+                  :to="$localePath(child.to)"
                   :prefetch="link.prefetch !== false"
                   :class="[
                     'flex items-center gap-3 px-4 py-3',
@@ -102,7 +102,7 @@
                   ]"
                 >
                   <span>
-                    <v-icon size="13">{{ child.icon }}</v-icon>
+                    <v-icon :icon="child.icon" size="13" />
                   </span>
                   <span>{{ $t(child.title) }}</span>
                 </nuxt-link>
@@ -131,7 +131,7 @@
           ]"
           @click="toggleDrawer"
         >
-          <v-icon>mdi-menu</v-icon>
+          <v-icon :icon="mdiMenu" />
         </button>
       </div>
     </div>
@@ -141,12 +141,11 @@
 <!-- ── JS ──────────────────────────────────────────────────────── -->
 <script setup>
 // icons
-import { mdiChevronDown } from "@mdi/js";
+import { mdiChevronDown, mdiMenu } from "@mdi/js";
 import { navLinks } from "~/data/navLinks";
 import BtnMode from "../UI/BtnMode";
 import BtnLang from "../UI/BtnLang";
 
-const localePath = useLocalePath();
 const { isDarkMode } = useDarkMode();
 const { lang } = useLang();
 

@@ -21,7 +21,6 @@
 
 <!-- ===== JS ===== -->
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
 import { useRoute } from "vue-router";
 const route = useRoute();
 

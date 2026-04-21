@@ -111,9 +111,6 @@
 
 <!-- ===== JS ===== -->
 <script setup>
-import { ref, watch, onMounted } from "vue";
-import { useRoute } from "vue-router";
-import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 
 const isPageLoading = ref(true);

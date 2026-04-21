@@ -107,7 +107,8 @@
                 <div
                   class="w-7 h-7 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
                 >
-<v-icon :icon="mdiMapMarker" size="16" />                </div>
+                  <v-icon :icon="mdiMapMarker" size="16" />
+                </div>
                 {{ $t(artifact.location) }}
               </div>
 

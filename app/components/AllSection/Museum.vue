@@ -107,9 +107,9 @@
       </div>
       <!-- ==== Btn see more ==== -->
       <div class="mt-14" v-if="data.length < 7">
-        <nuxt-link to="/museums">
+        <nuxt-link :to="$localePath('/museums')">
           <button
-            v-gsap.entrance.slide-right="{ duration: 2 }"
+            v-gsap.entrance.slide-right="{ duration: 1.5 }"
             class="relative mx-auto bg-textmain! dark:bg-[#ffffff1a]! text-white font-medium text-[17px] px-4 py-[0.35em] pl-5 h-[2.8em] rounded-[0.9em] flex items-center overflow-hidden cursor-pointer shadow-[inset_0_0_1.6em_-0.6em_#714da6] group"
           >
             <span class="mr-10">{{ $t("section_museums.seeMore") }}</span>

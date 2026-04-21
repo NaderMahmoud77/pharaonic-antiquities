@@ -36,7 +36,7 @@
 
     <!-- ── Copyright ── -->
     <div class="flex items-center gap-1.5 text-xs text-textmain">
-      <v-icon size="12">mdi-copyright</v-icon>
+      <v-icon size="12" :icon="mdiCopyright" />
       <span>{{ new Date().getFullYear() }}</span>
       <span class="mx-0.5">—</span>
       <strong class="text-textmain/60 dark:text-white/50">Nader</strong>
@@ -48,7 +48,7 @@
 
 <!-- -------- JS -------- -->
 <script setup>
-import { mdiFacebook, mdiTwitter, mdiLinkedin, mdiInstagram } from "@mdi/js";
+import { mdiFacebook, mdiTwitter, mdiLinkedin, mdiInstagram, mdiCopyright } from "@mdi/js";
 const socials = [
   { icon: mdiFacebook, label: "Facebook" },
   { icon: mdiTwitter, label: "Twitter" },

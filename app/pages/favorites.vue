@@ -48,7 +48,7 @@
 
         <!-- CTA -->
         <NuxtLink
-          to="/"
+          :to="$localePath('/')"
           class="mt-8 inline-flex items-center gap-2 px-5! py-2.5! rounded-xl text-sm font-medium bg-primaryTwo! dark:bg-secondary! text-white! dark:text-gray-900! hover:opacity-90! transition-all"
         >
           <v-icon size="16" :icon="mdiCompassOutline" />
@@ -80,7 +80,10 @@
               {{ safeT(temp.name) }}
             </h3>
 
-            <div v-if="temp.period" class="flex items-center gap-2 text-sm text-gray-500 mt-1">
+            <div
+              v-if="temp.period"
+              class="flex items-center gap-2 text-sm text-gray-500 mt-1"
+            >
               <div
                 class="w-6 h-6 rounded-full bg-primaryTwo/10 dark:bg-secondary/10 flex items-center justify-center flex-shrink-0"
               >

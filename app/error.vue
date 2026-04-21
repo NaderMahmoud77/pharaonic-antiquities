@@ -78,11 +78,10 @@
             <div class="absolute inset-0 flex items-center justify-center">
               <div class="animate-float">
                 <v-icon
+                  :icon="mdiCompassOffOutline"
                   size="80"
                   class="text-primaryTwo dark:text-secondary opacity-80"
-                >
-                  mdi-compass-off-outline
-                </v-icon>
+                />
               </div>
             </div>
           </div>
@@ -120,7 +119,7 @@
             class="group relative px-8 py-4 bg-primaryTwo dark:bg-secondary text-white dark:text-gray-900 rounded-2xl font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 min-w-[200px]"
           >
             <span class="relative z-10 flex items-center justify-center gap-2">
-              <v-icon size="20">mdi-home</v-icon>
+              <v-icon size="20" :icon="mdiHome" />
               {{ $t("notFound.goHome") || "Go Home" }}
             </span>
             <!-- Shine effect -->
@@ -135,7 +134,7 @@
             class="group px-8 py-4 bg-white dark:bg-gray-800 text-primaryTwo dark:text-secondary border-2 border-primaryTwo dark:border-secondary rounded-2xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 min-w-[200px]"
           >
             <span class="flex items-center justify-center gap-2">
-              <v-icon size="20">mdi-arrow-left</v-icon>
+              <v-icon size="20" :icon="mdiArrowLeft" />
               {{ $t("notFound.goBack") || "Go Back" }}
             </span>
           </button>
@@ -144,27 +143,20 @@
         <!-- Additional Links -->
         <div class="flex flex-wrap gap-6 justify-center text-sm">
           <NuxtLink
-            to="/temples"
+            :to="$localePath({ name: 'relics/temples' })"
             class="text-gray-600 dark:text-gray-400 hover:text-primaryTwo dark:hover:text-secondary transition-colors duration-300 flex items-center gap-1"
           >
-            <v-icon size="16">mdi-temple-hindu</v-icon>
+            <v-icon :icon="mdiTempleHindu" size="16" />
+
             {{ $t("notFound.exploreTemples") || "Explore Temples" }}
           </NuxtLink>
 
           <NuxtLink
-            to="/museums"
+            :to="$localePath({ name: 'museums' })"
             class="text-gray-600 dark:text-gray-400 hover:text-primaryTwo dark:hover:text-secondary transition-colors duration-300 flex items-center gap-1"
           >
-            <v-icon size="16">mdi-bank</v-icon>
+            <v-icon :icon="mdiBank" size="16" />
             {{ $t("notFound.visitMuseums") || "Visit Museums" }}
-          </NuxtLink>
-
-          <NuxtLink
-            to="/artifacts"
-            class="text-gray-600 dark:text-gray-400 hover:text-primaryTwo dark:hover:text-secondary transition-colors duration-300 flex items-center gap-1"
-          >
-            <v-icon size="16">mdi-pottery</v-icon>
-            {{ $t("notFound.discoverArtifacts") || "Discover Artifacts" }}
           </NuxtLink>
         </div>
       </div>
@@ -174,6 +166,13 @@
 
 <!-- ===== JS ===== -->
 <script setup>
+import {
+  mdiCompassOffOutline,
+  mdiBank,
+  mdiTempleHindu,
+  mdiArrowLeft,
+  mdiHome,
+} from "@mdi/js";
 // SEO metadata
 definePageMeta({
   layout: false,

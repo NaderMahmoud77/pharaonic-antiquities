@@ -66,7 +66,7 @@
 
             <!-- CTA -->
             <NuxtLink
-              to="/artifacts-3d"
+              :to="$localePath('/artifacts-3d')"
               class="cta-btn content-item backdrop-blur-md delay-4 inline-flex items-center mt-8 px-5! py-2.5! gap-1 rounded-lg font-medium dark:text-secondary! hover:dark:text-primary! hover:text-secondary! border border-primaryTwo/30 dark:border-secondary/30 transition-all duration-200"
             >
               <span>3D</span> {{ $t("links_nav.artifacts_3d") }}

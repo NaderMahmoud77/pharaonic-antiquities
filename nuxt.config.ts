@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   },
 
   app: {
+    baseURL: process.env.GH_PAGES ? "/pharaonic-antiquities/" : "/",
     head: {
       script: [
         {

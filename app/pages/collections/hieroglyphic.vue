@@ -33,7 +33,7 @@
               <v-icon
                 size="18"
                 :icon="item.raw.icon"
-                class="text-primaryTwo! dark:text-secondary!"
+                class="dark:text-primaryTwo! text-secondary!"
               />
             </template>
 

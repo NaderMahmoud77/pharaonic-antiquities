@@ -192,7 +192,6 @@
           <v-list-group
             v-if="link.items"
             v-model="openGroups[index]"
-            prepend-icon="mdi-chevron-down"
             class="py-4!"
           >
             <template #activator="{ props }">
@@ -200,14 +199,23 @@
                 v-bind="props"
                 :title="$t(link.title)"
                 :prepend-icon="link.icon"
-              />
+                class="pl-2!"
+              >
+                <template #append>
+                  <v-icon
+                    :icon="mdiChevronDown"
+                    size="16"
+                    class="opacity-70 transition-transform duration-300"
+                    :class="{ 'rotate-180!': openGroups[index] }"
+                  />
+                </template>
+              </v-list-item>
             </template>
-
             <v-list-item
               v-for="(item, idx) in link.items"
               :key="idx"
               :title="$t(item.title)"
-              :to="item.to"
+              :to="$localePath(item.to)"
             >
               <template #prepend>
                 <v-icon size="14">{{ item.icon }}</v-icon>
@@ -219,7 +227,7 @@
           <v-list-item
             v-else
             :title="$t(link.title)"
-            :to="link.to"
+            :to="$localePath(link.to)"
             :prepend-icon="link.icon"
             class="py-4 cursor-pointer"
           />
@@ -254,6 +262,7 @@ import {
   mdiInstagram,
   mdiLinkedin,
   mdiChevronDoubleDown,
+  mdiChevronDown,
 } from "@mdi/js";
 // =========== Data ===========
 import { navLinks } from "~/data/navLinks";
