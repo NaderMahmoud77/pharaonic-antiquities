@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
-    "deploy": "gh-pages -d .output/public",
     "generate": "nuxt generate",
     "generate:gh": "cross-env GH_PAGES=true nuxt generate --preset github_pages",
     "preview": "nuxt preview",
@@ -28,7 +27,6 @@
   },
   "devDependencies": {
     "cross-env": "^10.1.0",
-    "gh-pages": "^6.3.0",
     "vite-plugin-vuetify": "^2.1.2",
     "vuetify": "^3.10.11"
   }

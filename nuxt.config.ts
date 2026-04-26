@@ -6,6 +6,8 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: false },
 
+  ssr: false,
+
   css: ["./app/assets/main.css"],
 
   // Enable experimental payload extraction for better performance
