@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   },
 
   app: {
-    baseURL: process.env.GH_PAGES ? "/pharaonic-antiquities/" : "/",
+    baseURL: process.env.NUXT_APP_BASE_URL || "/",
     head: {
       script: [
         {
@@ -38,7 +38,7 @@ export default defineNuxtConfig({
 
   // 👇 مهم جدًا لـ Netlify
   nitro: {
-    preset: "netlify",
+    preset: process.env.NITRO_PRESET || "node",
   },
 
   // Vuetify

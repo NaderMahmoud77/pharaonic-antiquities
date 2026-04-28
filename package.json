@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
+    "build:netlify": "NITRO_PRESET=netlify nuxt build",
+    "build:gh": "NITRO_PRESET=github_pages NUXT_APP_BASE_URL=/pharaonic-antiquities/ nuxt build",
     "generate": "nuxt generate",
-    "generate:gh": "cross-env GH_PAGES=true nuxt generate --preset github_pages",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
