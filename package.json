@@ -6,8 +6,9 @@
     "dev": "nuxt dev",
     "build": "nuxt build",
     "build:netlify": "NITRO_PRESET=netlify nuxt build",
-    "build:gh": "NITRO_PRESET=github_pages NUXT_APP_BASE_URL=/pharaonic-antiquities/ nuxt build",
+    "build:gh": "cross-env NITRO_PRESET=github_pages NUXT_APP_BASE_URL=/pharaonic-antiquities/ nuxt build",
     "generate": "nuxt generate",
+    "deploy": "gh-pages -d .output/public",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "cross-env": "^10.1.0",
+    "gh-pages": "^6.3.0",
     "vite-plugin-vuetify": "^2.1.2",
     "vuetify": "^3.10.11"
   }
