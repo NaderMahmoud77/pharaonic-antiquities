@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: false },
 
-  ssr: false,
+  // ssr: false,
 
   css: ["./app/assets/main.css"],
 
@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   },
 
   app: {
-    baseURL: process.env.NUXT_APP_BASE_URL || "/",
+    baseURL: process.env.GH_PAGES ? "/pharaonic-antiquities/" : "/",
     head: {
       script: [
         {
@@ -38,7 +38,7 @@ export default defineNuxtConfig({
 
   // 👇 مهم جدًا لـ Netlify
   nitro: {
-    preset: process.env.NITRO_PRESET || "node",
+    preset: "netlify",
   },
 
   // Vuetify
